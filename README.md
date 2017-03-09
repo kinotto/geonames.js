@@ -1,6 +1,9 @@
 # geonames.js
-javascript library to fetch country state region etc. A flexible library for browser and Nodejs usage
+javascript library to fetch country state region etc.
+
+A flexible library for browser and Nodejs usage
 built on top <a href="http://www.geonames.org/">geonames.org<a> REST api
+
 <img src="https://travis-ci.org/travis-ci/travis-web.svg?branch=master" alt="not found" />
 
 ###1. Installation
@@ -17,14 +20,19 @@ built on top <a href="http://www.geonames.org/">geonames.org<a> REST api
 ###2. Usage:
 
 
-You can fetch information about continent, states, region, provinces, cities taking the advandage of the huge amount of information provided by geonames.org service the parameters requested by the original api.
+You can fetch information about continent, states, region, provinces, cities taking the advandage of the huge amount of information provided by geonames.org service API.
 
 - **Nodejs**: (promise based API)
+  additional requirements:
   
-  first
+  > npm install --save bluebird request
+  
+  first import the module
+  
   ```javascript
   var Geonames = require('../src/geonames');
   ```
+
 
   ```javascript
   var Geonames = require('../src/geonames');
@@ -47,20 +55,22 @@ You can fetch information about continent, states, region, provinces, cities tak
     return geonames.children({geonameId: countries.geonames[0].geonameId})
   })
   .then(function(stateOrProvince){
-   return geonames.children({geonameId: stateOrProvince.geonames[0].geonameId});
+    return geonames.children({geonameId: stateOrProvince.geonames[0].geonameId});
   })
   .then(function(region){
-   return geonames.children({geonameId: region.geonames[0].geonameId});
+    return geonames.children({geonameId: region.geonames[0].geonameId});
   })
   .then(function(cities){
-   console.log(cities.geonames);
+    console.log(cities.geonames);
   })
   .catch(function(err){
   })
   ```
 
-- **browser **: (plain ajax xhr call)
+- **browser**: (plain ajax xhr call)
+
   you have to import the script here:
+  
 
   ```html
   <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
@@ -72,7 +82,7 @@ You can fetch information about continent, states, region, provinces, cities tak
     //error
   })
 
-###4. Contribution:
+###3. Contribution:
 Feel free to contribute, any help is really appreciated :)
 
 
@@ -86,16 +96,11 @@ run with:
 
 
 
-<br/><br/><br/>
-
-Credit for scrollReveal.js to @jlmakes
-
-
-<br/><br/><br/>
 
 
 
-###5. License:
+
+###4. License:
 MIT License
 
 Copyright (c) 2017 kinotto
