@@ -41,6 +41,6 @@ gulp.task('default', ['watch','express', 'doc'], function() {
 });
 
 
-gulp.task('dist', sync.sync(['cleanBuild', ['copy','usemin']]), function(){
+gulp.task('dist', sync.sync(['cleanBuild', ['usemin']]), function(){
 
 });
