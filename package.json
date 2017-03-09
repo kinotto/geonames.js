@@ -1,7 +1,7 @@
 {
   "name": "geonames.js",
   "version": "1.0.0",
-  "homepage": "https://github.com/kinotto/geonames.js#readme",
+  "homepage": "https://github.com/kinotto/geonames.js",
   "description": "REST api to fetch any places . A flexible library for browser and server usage based on http://www.geonames.org/",
   "main": "src/geonames.js",
   "directories": {
