@@ -1,7 +1,7 @@
 # geonames.js
-javascript library to fetch country state region etc.
+if you Need an API to fetch countries, state, region, cities here's the library you're looking for
 
-A flexible library for browser and Nodejs usage
+geonames.js is a flexible library for browser and Nodejs 
 built on top <a href="http://www.geonames.org/">geonames.org<a> REST api
 
 <img src="https://travis-ci.org/travis-ci/travis-web.svg?branch=master" alt="not found" />
@@ -31,13 +31,13 @@ You can fetch information about continent, states, region, provinces, cities tak
   first import the module
   
   ```javascript
-  var Geonames = require('../src/geonames');
+  var Geonames = require('geonames');
+  geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
 
   ```javascript
-  var Geonames = require('../src/geonames');
-  geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
+  //plain call
   geonames.search({q: 'CONT'}) //get continents
   .then(function(resp){
     console.log(resp.geonames);
@@ -48,10 +48,7 @@ You can fetch information about continent, states, region, provinces, cities tak
   
   ```javascript
   //chaining calls
-  var Geonames = require('../src/geonames');
-  geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
-  
-  geonames.countryInfo({}) //get countries 
+  geonames.countryInfo({}) 
   .then(function(countries){
     return geonames.children({geonameId: countries.geonames[0].geonameId})
   })
@@ -76,12 +73,15 @@ You can fetch information about continent, states, region, provinces, cities tak
   ```html
   <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
   ```
-  
+  ```javascript
+   //Geonames constructor is attacched to the global object
+  geonames = new GeoNames({username: username, lan: 'en', encoding: 'JSON'});
   geonames.search({q: 'CONT'}, function(continents){ //plain xhr call
     console.log(continents);
   }, function(err){
     //error
   })
+  ```
 
 ###3. Contribution:
 Feel free to contribute, any help is really appreciated :)
