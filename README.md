@@ -14,7 +14,7 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 
 ###2. Requirements
-You **need to** register (it's free) on <a href="http://www.geonames.org/login" target="_blank">Geonames.org</a>
+You **need to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
 in order to get the username that will be necessary for the api to work
 
 
@@ -24,7 +24,7 @@ in order to get the username that will be necessary for the api to work
 
 You can fetch information about continents, states, regions, provinces, cities taking advandage of the huge amount of information provided by geonames.org.
 
-The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html" target="_blank">here</a> under the webservice column.
+The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
 Below i show some few examples.
 
