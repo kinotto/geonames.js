@@ -74,7 +74,7 @@ You can fetch information about continent, states, region, provinces, cities tak
   <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
   ```
   ```javascript
-   //Geonames constructor is attacched to the global object
+   //GeoNames constructor is attacched to the global object
   geonames = new GeoNames({username: username, lan: 'en', encoding: 'JSON'});
   geonames.search({q: 'CONT'}, function(continents){ //plain xhr call
     console.log(continents);
