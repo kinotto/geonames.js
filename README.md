@@ -72,7 +72,7 @@ Below i show some few examples.
 
 - **browser**: (plain ajax xhr call)
 
-  you have to import the script here:
+ import the script:
   
 
   ```html
