@@ -57,10 +57,10 @@ Below i show some few examples.
   .then(function(countries){
     return geonames.children({geonameId: countries.geonames[0].geonameId})
   })
-  .then(function(stateOrProvince){
+  .then(function(states){
     return geonames.children({geonameId: stateOrProvince.geonames[0].geonameId});
   })
-  .then(function(region){
+  .then(function(regions){
     return geonames.children({geonameId: region.geonames[0].geonameId});
   })
   .then(function(cities){
