@@ -22,18 +22,18 @@ in order to get the username that will be necessary for the api to work
 ###3. Usage:
 
 
-You can fetch information about continent, states, region, provinces, cities taking the advandage of the huge amount of information provided by geonames.org service API.
+You can fetch information about continents, states, regions, provinces, cities taking advandage of the huge amount of information provided by geonames.org.
 
-The list of available API is in the table <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
+The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
 Below i show some few examples.
 
 - **Nodejs**: (promise based API)
-  additional requirements:
+
+  additional packages for node:
   
   > npm install --save bluebird request
   
-  first import the module
   
   ```javascript
   var Geonames = require('geonames');
