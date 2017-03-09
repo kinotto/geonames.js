@@ -10,20 +10,21 @@ built on top <a href="http://www.geonames.org/">geonames.org<a> REST api
 
 <br/>
 
-Load scripts:
 
-```html
-<script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
-```
 
 
 
 ###2. Usage:
 
+
 You can fetch information about continent, states, region, provinces, cities taking the advandage of the huge amount of information provided by geonames.org service the parameters requested by the original api.
 
-Nodejs: (promise based API)
-
+- **Nodejs**: (promise based API)
+  
+  first
+  ```javascript
+  var Geonames = require('../src/geonames');
+  ```
 
   ```javascript
   var Geonames = require('../src/geonames');
@@ -40,6 +41,7 @@ Nodejs: (promise based API)
   //chaining calls
   var Geonames = require('../src/geonames');
   geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
+  
   geonames.countryInfo({}) //get countries 
   .then(function(countries){
     return geonames.children({geonameId: countries.geonames[0].geonameId})
@@ -57,48 +59,18 @@ Nodejs: (promise based API)
   })
   ```
 
-- **Directive**: using it as a directive is much more powerful, you simple have to decorate your DOM element with the directive ```ng-scroll-reveal``` passing an object representing the [options](https://github.com/jlmakes/scrollreveal).
-In addition the user have the chance to execute a sequence of animation (adding a field 'sequence' to the above object)
-
-  ####A basic usage:
-  ```javascript
-  options= {
-    origin: 'top',
-    duration: 300 //ms
-  }
-  ```
-  ```html
-  <div id="idTest" ng-scroll-reveal="options">Hello</div>
-  ```
-
-
-  ####Advanced Usage with sequenced animations:
-
-  ```javascript
-  optionsSequence = {
-    origin: 'top',
-    duration: 300,
-    sequence: {
-      selector: 'myChildSelector', //optional field, if not specified all the DIRECT children will be animated
-      interval: 300
-    }
-  }
-  ```
+- **browser **: (plain ajax xhr call)
+  you have to import the script here:
 
   ```html
-  <div ng-scroll-reveal="optionsSequence">
-    <div class="myChildSelector">Hello</div>
-    <div class="myChildSelector">Hello</div>
-    <div class="myChildSelector">Hello</div>
-    <div class="myChildSelector">Hello</div>
-  </div>
+  <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
   ```
-<img src="http://i.imgur.com/Do3Ht57.gif" alt="no image" />
-
-###3. Examples:
-* Github page made using the directive [**here**](https://kinotto.github.io/ngScrollReveal/github_page)
-* here is a [**link**](https://plnkr.co/edit/uBwOZf8OrQOfY31EAslM?p=preview) to a plunkr with a list of working examples.
-
+  
+  geonames.search({q: 'CONT'}, function(continents){ //plain xhr call
+    console.log(continents);
+  }, function(err){
+    //error
+  })
 
 ###4. Contribution:
 Feel free to contribute, any help is really appreciated :)
@@ -109,6 +81,8 @@ run with:
 >gulp
 
 >gulp dist (for the minification)
+
+>USERNAME=myusername npm test (for unit testing)
 
 
 
