@@ -8,17 +8,18 @@ built on top <a href="http://www.geonames.org/">geonames.org<a> REST api
 
 ###1. Installation
 
-
 > npm install --save geonames.js
 
 <br/>
 
 
-You **need to** register yourself on <a href="http://www.geonames.org/login">Geonames.org</a>
+###2. Requirements
+You **need to** register on <a href="http://www.geonames.org/login">Geonames.org</a>
 in order to get the username that will be necessary for the api to work
 
 
-###2. Usage:
+
+###3. Usage:
 
 
 You can fetch information about continent, states, region, provinces, cities taking the advandage of the huge amount of information provided by geonames.org service API.
@@ -87,7 +88,7 @@ Below i show some few examples.
   })
   ```
 
-###3. Contribution:
+###4. Contribution:
 Feel free to contribute, any help is really appreciated :)
 
 
@@ -105,7 +106,7 @@ run with:
 
 
 
-###4. License:
+###5. License:
 MIT License
 
 Copyright (c) 2017 kinotto
