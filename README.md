@@ -26,8 +26,6 @@ You can fetch information about continents, states, regions, provinces, cities t
 
 The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
-Below i show some few examples.
-
 - **Nodejs**: (promise based API)
 
   additional packages for node:
