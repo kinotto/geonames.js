@@ -1,5 +1,5 @@
 # geonames.js
-if you Need an API to fetch countries, state, region, cities here's the library you're looking for
+if you Need an API to fetch countries, states, regions, cities dynamically here's the library you're looking for
 
 geonames.js is a flexible library for browser and Nodejs 
 built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> REST api
