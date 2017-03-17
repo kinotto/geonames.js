@@ -2,7 +2,7 @@
   "name": "geonames.js",
   "version": "1.0.0",
   "homepage": "https://github.com/kinotto/geonames.js",
-  "description": "REST api to fetch any places . A flexible library for browser and server usage based on http://www.geonames.org/",
+  "description": "REST api to fetch any geoname . A flexible library for browser and node.js usage built on top http://www.geonames.org/",
   "main": "src/geonames.js",
   "directories": {
     "test": "test"
