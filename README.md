@@ -6,20 +6,20 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 <img src="https://travis-ci.org/travis-ci/travis-web.svg?branch=master" alt="not found" />
 
-###1. Installation
+### 1. Installation
 
 > npm install --save geonames.js
 
 <br/>
 
 
-###2. Requirements
+### 2. Requirements
 You **need to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
 in order to get the username that will be necessary for the api to work
 
 
 
-###3. Usage:
+### 3. Usage:
 
 
 You can fetch information about continents, states, regions, provinces, cities taking advandage of the huge amount of information provided by geonames.org.
@@ -86,7 +86,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   })
   ```
 
-###4. Contribution:
+### 4. Contribution:
 Feel free to contribute, any help is really appreciated :)
 
 
@@ -104,7 +104,7 @@ run with:
 
 
 
-###5. License:
+### 5. License:
 MIT License
 
 Copyright (c) 2017 kinotto
