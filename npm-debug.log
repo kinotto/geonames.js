@@ -1,0 +1,35 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'version',
+1 verbose cli   '1.0.2' ]
+2 info using npm@3.8.6
+3 info using node@v5.11.1
+4 info git [ 'status', '--porcelain' ]
+5 verbose stack Error: Git working directory not clean.
+5 verbose stack M gulpfile.js
+5 verbose stack M package.json
+5 verbose stack M spec/test-browser.html
+5 verbose stack M spec/test-browser.js
+5 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\version.js:246:19
+5 verbose stack     at ChildProcess.exithandler (child_process.js:193:7)
+5 verbose stack     at emitTwo (events.js:100:13)
+5 verbose stack     at ChildProcess.emit (events.js:185:7)
+5 verbose stack     at maybeClose (internal/child_process.js:850:16)
+5 verbose stack     at Socket.<anonymous> (internal/child_process.js:323:11)
+5 verbose stack     at emitOne (events.js:90:13)
+5 verbose stack     at Socket.emit (events.js:182:7)
+5 verbose stack     at Pipe._onclose (net.js:484:12)
+6 verbose cwd C:\Workspace\Geonames
+7 error Windows_NT 6.1.7601
+8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "version" "1.0.2"
+9 error node v5.11.1
+10 error npm  v3.8.6
+11 error Git working directory not clean.
+11 error M gulpfile.js
+11 error M package.json
+11 error M spec/test-browser.html
+11 error M spec/test-browser.js
+12 error If you need help, you may report this error at:
+12 error     <https://github.com/npm/npm/issues>
+13 verbose exit [ 1, true ]

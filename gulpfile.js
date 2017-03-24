@@ -5,7 +5,6 @@ var livereload = require('gulp-livereload');
 var requireDir = require('require-dir');
 var tasks = requireDir('gulp', {recurse: true});
 var util = require('gulp-util');
-var jsdoc = require("gulp-jsdoc");
 
 gulp.task('express', function() {
   var express = require('express');
@@ -32,9 +31,6 @@ gulp.task('watch', function() {
   livereload.listen();
 });
 
-gulp.task('doc', function(){
-  
-})
 
 gulp.task('default', ['watch','express', 'doc'], function() {
 
