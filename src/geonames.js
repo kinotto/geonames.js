@@ -1,9 +1,9 @@
 ;(function(){
     'use strict';
-    
+
     var ENV = {
-        SERVER: 0, //server usage 
-        BROWSER: 1 //browser usage 
+        SERVER: 0, //server usage
+        BROWSER: 1 //browser usage
     }
     var _cache = {};
     var _env = typeof module !== 'undefined' && module.exports ?
@@ -82,7 +82,7 @@
     for(var i = 0; i < GeoNames.prototype.CONF.geoNamesAPI.length; i++){
         (function(indexAPI){
             GeoNames.prototype[GeoNames.prototype.CONF.geoNamesAPI[indexAPI]] = function(params, successCb, errorCb){
-                if(typeof params === 'function'){ 
+                if(typeof params === 'function'){
                     //user did not specified the parameters object arguments sliced to the right
                     var _successCb = params;
                     var _errorCb = successCb;
@@ -105,33 +105,33 @@
                 }
                 return ajaxCall(options, _env, successCb, errorCb);
             }
-        }(i));        
+        }(i));
     }
-   
+
 
     function ajaxCall(options, _env, successCb, errorCb){
 
         if(_env === ENV.BROWSER){
-            browserCall(options, successCb, errorCb); 
+            browserCall(options, successCb, errorCb);
         } else{
             return new Promise(function(resolve, reject){
                 /*if(errParams){
                     return reject(errParams);
-                }*/ 
+                }*/
                 if(_cache[options.uri]){ /*avoid making a new ajax call */
                     return resolve(_cache[options.uri]);
                 }
                 serverCall(options, resolve, reject);
             })
         }
-        
+
     }
 
     function browserCall(options, successCb, errorCb) {
         var xhr = new XMLHttpRequest();
         successCb = successCb || function(resp){console.log('Geonames.js - call return with success status but is not managed '+resp)}
         errorCb = errorCb || function(error){console.log('Geonames.js - exception thrown and not handled '+error)}
-        
+
         if(_cache[options.uri]){ /*avoid making a new ajax call */
             return successCb(_cache[options.uri]);
         }
@@ -152,7 +152,7 @@
         xhr.open(options.method, options.uri, true);
         xhr.send();
     }
-    function serverCall(options, resolve, reject){      
+    function serverCall(options, resolve, reject){
         var req = request(options,
         function (err, resp, bodyresp) {
         if (err || resp.statusCode >= 400) {
@@ -178,7 +178,7 @@
         return url;
     }
 
-    function extend(){ //extend({}, a, b) and extend(a, b) 
+    function extend(){ //extend({}, a, b) and extend(a, b)
         for(var i=1; i<arguments.length; i++)
             for(var key in arguments[i])
                 if(arguments[i].hasOwnProperty(key))
@@ -192,4 +192,4 @@
         window.GeoNames = GeoNames;
     }
 
-}())
+})();
