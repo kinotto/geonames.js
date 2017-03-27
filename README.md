@@ -30,7 +30,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 
   
   ```javascript
-  var Geonames = require('geonames');
+  var Geonames = require('geonames.js');
   geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
