@@ -14,7 +14,7 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 
 ### 2. Requirements
-You **need to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
+You **have to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
 in order to get the username that will be necessary for the api to work
 
 
