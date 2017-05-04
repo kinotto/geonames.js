@@ -4,7 +4,7 @@ if you Need an API to fetch countries, states, regions, cities dynamically here'
 geonames.js is a flexible library for browser and Nodejs 
 built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> REST api
 
-<img src="https://travis-ci.org/travis-ci/travis-web.svg?branch=master" alt="not found" />
+<img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" />
 
 ### 1. Installation
 
