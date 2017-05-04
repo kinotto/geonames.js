@@ -51,7 +51,7 @@ describe('Geonames API', function(){
       })
     })
 
-    it('should return countries information', function(done){
+    /*it('should return countries information', function(done){
       geonames.countryInfo()
       .then(function(resp){
         expect(resp.geonames[0].capital).to.exist;
@@ -60,7 +60,7 @@ describe('Geonames API', function(){
       .catch(function(err){
         done(err);
       })
-    })
+    })*/
 
     it('should return children information', function(done){
       geonames.children({geonameId: '6255148'})
