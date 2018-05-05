@@ -4,7 +4,11 @@ if you Need an API to fetch countries, states, regions, cities dynamically here'
 geonames.js is a flexible library for browser and Nodejs 
 built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> REST api
 
-<img src="https://travis-ci.org/travis-ci/travis-web.svg?branch=master" alt="not found" />
+<img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" />
+
+
+![img](https://thumbs.gfycat.com/LegitimateSlushyHydra-max-14mb.gif)
+
 
 ### 1. Installation
 
@@ -14,7 +18,7 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 
 ### 2. Requirements
-You **need to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
+You **have to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
 in order to get the username that will be necessary for the api to work
 
 
@@ -22,7 +26,7 @@ in order to get the username that will be necessary for the api to work
 ### 3. Usage:
 
 
-You can fetch information about continents, states, regions, provinces, cities taking advandage of the huge amount of information provided by geonames.org.
+You can fetch almost anything taking advandage of the huge amount of information provided by geonames.org, It contains over 10 million geographical names and consists of over 9 million unique features whereof 2.8 million populated places and 5.5 million alternate names.
 
 The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
@@ -30,7 +34,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 
   
   ```javascript
-  var Geonames = require('geonames');
+  var Geonames = require('geonames.js');
   geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
