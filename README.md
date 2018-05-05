@@ -7,7 +7,7 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 <img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" />
 
 
-![img](https://thumbs.gfycat.com/LegitimateSlushyHydra-max-14mb.gif)
+![img](https://thumbs.gfycat.com/SecondarySlipperyCuscus-max-14mb.gif)
 
 
 ### 1. Installation
