@@ -12,7 +12,7 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 ### 1. Installation
 
-> npm install --save geonames.js
+ `npm install --save geonames.js`
 
 <br/>
 
