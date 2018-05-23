@@ -62,7 +62,7 @@ describe('Geonames API', function(){
       })
     })*/
 
-    it('should return children information', function(done){
+    /*it('should return children information', function(done){
       geonames.children({geonameId: '6255148'})
       .then(function(resp){
         expect(resp.geonames[0].population).to.exist;
@@ -71,7 +71,7 @@ describe('Geonames API', function(){
       .catch(function(err){
         done(err);
       })
-    })
+    })*/
 
     it('should return cities information', function(done){
       geonames.cities({

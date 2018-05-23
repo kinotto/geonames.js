@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha ./spec/test-server.js",
+    "test": "mocha ./spec/test-server.js --timeout 50000",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "request": "<=2.81.0"
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
