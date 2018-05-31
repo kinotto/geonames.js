@@ -30,7 +30,7 @@ You can fetch almost anything taking advandage of the huge amount of information
 
 The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
-- **Nodejs**: (bluebird promise based API)
+- **For CommonJS environments (Nodejs)**: (bluebird promise based API)
 
   
   ```javascript
@@ -68,7 +68,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   })
   ```
 
-- **browser**: (plain ajax xhr call)
+- **alternative**: (plain ajax xhr call)
 
  import the script:
   
