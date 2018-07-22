@@ -97,11 +97,13 @@ Feel free to contribute, any help is really appreciated :)
 
 run with:
 
->gulp
+`yarn dist (dev bundle)`
 
->gulp dist (for the minification)
+`yarn dist:prod (prod bundle)`
 
->USERNAME=myusername npm test (for unit testing)
+unit testing:
+
+`USERNAME=myusername npm test`
 
 
 
