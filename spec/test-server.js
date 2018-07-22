@@ -17,29 +17,6 @@ describe('Geonames', () => {
   })
 })
 
-/*describe('test geonames WITH CALLBACKS', () => {
-  let geonames;
-  let originalPromise = global.Promise;
-
-  beforeEach(() => {
-    geonames = new Geonames({ username, lan: 'en', encoding: 'JSON' });
-  })
-
-  it('should return the continents', done => {
-    geonames.search({ q: 'CONT' }, resp => {
-      expect(resp.geonames).to.be.instanceOf(Array);
-      done();
-    }, err => {
-      done(err);
-    })
-
-  })
-
-  afterEach(() => {
-    global.Promise = originalPromise;
-  })
-})*/
-
 
 describe('Geonames API', () => {
 

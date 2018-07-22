@@ -1,5 +1,7 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const baseConfig = {
   entry: './src/geonames.js',
@@ -15,7 +17,17 @@ const baseConfig = {
         test: /\.js$/
       }
     ]
-  }
+  },
+  plugins: [
+    // set env variable to production to reduce bundle size, only for prod
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    // minification -> reduce the bundle , only for prod
+    new UglifyJSPlugin(),
+  ]
 }
 
 const browserConfig = {
