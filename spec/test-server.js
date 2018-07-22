@@ -7,7 +7,6 @@ const username = process.env.USERNAME;
 //const Geonames = require('../src/geonames');
 const Geonames = require('../dist/geonames.min.node.js');
 
-
 describe('Geonames', () => {
   it('should write an error on console if instantiated without parameters', () => {
     const spy = sinon.spy(console, 'log');
