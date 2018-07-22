@@ -75,10 +75,10 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
     return geonames.children({geonameId: countries.geonames[0].geonameId})
   })
   .then(states => {
-    return geonames.children({geonameId: stateOrProvince.geonames[0].geonameId});
+    return geonames.children({geonameId: states.geonames[0].geonameId});
   })
   .then(regions => {
-    return geonames.children({geonameId: region.geonames[0].geonameId});
+    return geonames.children({geonameId: regions.geonames[0].geonameId});
   })
   .then(cities => {
     console.log(cities.geonames);
