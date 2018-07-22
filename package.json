@@ -8,7 +8,8 @@
     "test": "mocha ./spec/test-server.js --timeout 50000",
     "test-debug": "mocha ./spec/test-server.js --nolazy --inspect-brk=9229",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "dist": "webpack"
+    "dist": "webpack --config webpack.config-dev.js",
+    "dist:prod": "webpack --config webpack.config-prod.js"
   },
   "repository": "git+https://github.com/kinotto/geonames.js.git",
   "author": "Karim Abdelcadir <kinotto88@yahoo.it>",

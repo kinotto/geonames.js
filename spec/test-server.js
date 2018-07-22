@@ -17,7 +17,6 @@ describe('Geonames', () => {
   })
 })
 
-
 describe('Geonames API', () => {
 
   var geonames;
@@ -37,15 +36,35 @@ describe('Geonames API', () => {
       })
   })
 
-  it('continent should have a continendCode ', done => {
-    geonames.search({ q: 'CONT' })
-      .then(resp => {
-        expect(resp.geonames[0].continentCode).to.exist;
-        done();
-      })
-      .catch(err => {
-        done(err);
-      })
+  it('should return the country code of Austria', done => {
+    geonames.countryCode({lat:47.03, lng:10.2})
+    .then(resp => {
+      done();
+    })
+    .catch(err => {
+      done(err);
+    })
+  })
+
+  it('should return the earthquakes', done => {
+    geonames.countryCode({north: 44.1, south: -9.9, east: -22.4,west: 55.2})
+    .then(resp => {
+      done();
+    })
+    .catch(err => {
+      done(err);
+    })
+  })
+
+  it('should return weather info', done => {
+    geonames.weather({north: 44.1, south: -9.9, east: -22.4,west: 55.2})
+    .then(resp => {
+      expect(resp.weatherObservations).to.exist;
+      done();
+    })
+    .catch(err => {
+      done(err);
+    })
   })
 
   it('should return countries information', done => {
