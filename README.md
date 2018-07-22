@@ -6,7 +6,7 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 <img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" style="display:inline" /> <img src="http://img.badgesize.io/kinotto/geonames.js/master/dist/geonames.min.node.js?max=100000&softmax=200000" alt="not found" />
 <img src="https://david-dm.org/kinotto/geonames.js.svg" alt="not found" style="display:inline" />
-[![Coverage Status](https://coveralls.io/repos/github/kinotto/geonames.js/badge.svg?branch=master)](https://coveralls.io/github/kinotto/geonames.js?branch=master)
+
 
 ![img](https://thumbs.gfycat.com/LegitimateSlushyHydra-max-14mb.gif)
 
