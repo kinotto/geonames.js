@@ -15,6 +15,10 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 ### 1. Installation
 
  `npm install --save geonames.js`
+ 
+ or
+ 
+ `yarn add geonames.js`
 
 <br/>
 
@@ -32,7 +36,22 @@ You can fetch almost anything taking advandage of the huge amount of information
 
 The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
-- **For CommonJS environments (Nodejs)**: (bluebird promise based API)
+- **Import the library**:
+   - ***server usage (NodeJS)***
+    ```javascript
+       var Geonames = require('geonames.js/dist/geonames.min.node.js');
+    ```
+   - ***browser usage (React, Angular, Vue etc.)***
+    ```javascript
+       var Geonames = require('geonames.js/dist/geonames.min.js');
+    ```
+   - ***alternative for old browser applications***
+    ```html
+      <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
+    ```
+     
+  
+- **Usage**:
 
   
   ```javascript
@@ -70,23 +89,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   })
   ```
 
-- **alternative**: (plain ajax xhr call)
 
- import the script:
-  
-
-  ```html
-  <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
-  ```
-  ```javascript
-   //GeoNames constructor is attacched to the global object
-  geonames = new GeoNames({username: username, lan: 'en', encoding: 'JSON'});
-  geonames.search({q: 'CONT'}, function(continents){ //plain xhr call
-    console.log(continents);
-  }, function(err){
-    //error
-  })
-  ```
 
 ### 4. Contribution:
 Feel free to contribute, any help is really appreciated :)
