@@ -27,7 +27,7 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 You **have to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
 in order to get the username that will be necessary for the api to work
 
-geonames.js depends on a native ES6 Promise implementation to be supported. If your environment doesn't support ES6 Promises, you can use a <a href="https://github.com/stefanpenner/es6-promise">polyfill</a> in order to make it available in the global scope, otherwise the library won't work.
+geonames.js depends on a native ES6 Promise implementation to be supported. If your environment doesn't support ES6 Promises, you can use a <a href="https://github.com/stefanpenner/es6-promise">polyfill</a>.
 
 ### 3. Usage:
 
@@ -65,7 +65,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   .then(resp => {
     console.log(resp.geonames);
   })
-  .catch(console.log.bind(console));
+  .catch(err => console.log(err));
   ```
   
   ```javascript
@@ -83,7 +83,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   .then(cities => {
     console.log(cities.geonames);
   })
-  .catch(console.log.bind(console));
+  .catch(err => console.log(err));
   ```
 
 
@@ -106,12 +106,12 @@ run with:
 
 
 ### 5. Changelog v2.0.0:
-- **Porting to es6 sintax and transpiler to es5**
-- **Added yarn and web pack**
-- **Splitted build in two different files for node and browser environments**
 - **Fixed major error on browser that was preventing the library to work**
 - **Removed callback based api call now the library is ONLY promised based**
 - **If you're coming from a previous version, the upgrade is not breaking you should still keep your production code as it is except if you were using the callback mechanism rather then the promise one.**
+- **Porting to es6 sintax with transpiling to es5**
+- **Added yarn and web pack**
+- **Splitted build in two different files for node and browser environments**
 
 
 
