@@ -39,11 +39,11 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 - **Import the library**:
    - ***server usage (NodeJS)***
     ```javascript
-       var Geonames = require('geonames.js/dist/geonames.min.node.js');
+       const Geonames = require('geonames.js/dist/geonames.min.node.js');
     ```
    - ***browser usage (React, Angular, Vue etc.)***
     ```javascript
-       var Geonames = require('geonames.js/dist/geonames.min.js');
+       const Geonames = require('geonames.js/dist/geonames.min.js');
     ```
    - ***alternative for old browser applications***
     ```html
@@ -55,8 +55,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 
   
   ```javascript
-  const Geonames = require('geonames.js');
-  geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
+  const geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
 
