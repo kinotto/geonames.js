@@ -6,23 +6,28 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 <img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" style="display:inline" /> <img src="http://img.badgesize.io/kinotto/geonames.js/master/dist/geonames.min.node.js?max=100000&softmax=200000" alt="not found" />
 <img src="https://david-dm.org/kinotto/geonames.js.svg" alt="not found" style="display:inline" />
+[![Coverage Status](https://coveralls.io/repos/github/kinotto/geonames.js/badge.svg?branch=master)](https://coveralls.io/github/kinotto/geonames.js?branch=master)
 
 ![img](https://thumbs.gfycat.com/LegitimateSlushyHydra-max-14mb.gif)
 
+
+<br/> <br/>
 
 
 ### 1. Installation
 
  `npm install --save geonames.js`
-
-<br/>
+ 
+ or
+ 
+ `yarn add geonames.js`
 
 
 ### 2. Requirements
 You **have to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
 in order to get the username that will be necessary for the api to work
 
-
+geonames.js depends on a native ES6 Promise implementation to be supported. If your environment doesn't support ES6 Promises, you can use a <a href="https://github.com/stefanpenner/es6-promise">polyfill</a> in order to make it available in the global scope, otherwise the library won't work.
 
 ### 3. Usage:
 
@@ -31,61 +36,57 @@ You can fetch almost anything taking advandage of the huge amount of information
 
 The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
-- **For CommonJS environments (Nodejs)**: (bluebird promise based API)
+- **Import the library**:
+   - ***server usage (NodeJS)***
+    ```javascript
+       const Geonames = require('geonames.js/dist/geonames.min.node.js');
+    ```
+   - ***browser usage (React, Angular, Vue etc.)***
+    ```javascript
+       const Geonames = require('geonames.js/dist/geonames.min.js');
+    ```
+   - ***alternative for old browser applications***
+    ```html
+      <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
+    ```
+     
+  
+- **Usage**:
 
   
   ```javascript
-  var Geonames = require('geonames.js');
-  geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
+  const geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
 
   ```javascript
   //plain call
   geonames.search({q: 'CONT'}) //get continents
-  .then(function(resp){
+  .then(resp => {
     console.log(resp.geonames);
   })
-  .catch(function(err){
-  })
+  .catch(console.log.bind(console));
   ```
   
   ```javascript
   //chaining calls
   geonames.countryInfo({}) 
-  .then(function(countries){
+  .then(countries => {
     return geonames.children({geonameId: countries.geonames[0].geonameId})
   })
-  .then(function(states){
+  .then(states => {
     return geonames.children({geonameId: stateOrProvince.geonames[0].geonameId});
   })
-  .then(function(regions){
+  .then(regions => {
     return geonames.children({geonameId: region.geonames[0].geonameId});
   })
-  .then(function(cities){
+  .then(cities => {
     console.log(cities.geonames);
   })
-  .catch(function(err){
-  })
+  .catch(console.log.bind(console));
   ```
 
-- **alternative**: (plain ajax xhr call)
 
- import the script:
-  
-
-  ```html
-  <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
-  ```
-  ```javascript
-   //GeoNames constructor is attacched to the global object
-  geonames = new GeoNames({username: username, lan: 'en', encoding: 'JSON'});
-  geonames.search({q: 'CONT'}, function(continents){ //plain xhr call
-    console.log(continents);
-  }, function(err){
-    //error
-  })
-  ```
 
 ### 4. Contribution:
 Feel free to contribute, any help is really appreciated :)
@@ -93,26 +94,24 @@ Feel free to contribute, any help is really appreciated :)
 
 run with:
 
->gulp
+`yarn dist (dev bundle)`
 
->gulp dist (for the minification)
+`yarn dist:prod (prod bundle)`
 
->USERNAME=myusername npm test (for unit testing)
+`USERNAME=myusername npm test (unit testing)`
+
 
 
 
 
 
 ### 5. Changelog v2.0.0:
-- **Porting to es6 sintax and transpiring to es5**
+- **Porting to es6 sintax and transpiler to es5**
 - **Added yarn and web pack**
-- **Split build in two different files for node and browser environments**
-- **fix major error on browser**
-- **Removed callback based api call now is only promised based**
-- **If you're coming from a previous version, the upgrade is not breaking you should still keep your production code as it is except if you were using the callback back mechanism rather then the promise one.**
-
-
-geonames.js depends on a native ES6 Promise implementation to be supported. If your environment doesn't support ES6 Promises, you can <a href="https://github.com/stefanpenner/es6-promise">polyfill</a>
+- **Splitted build in two different files for node and browser environments**
+- **Fixed major error on browser that was preventing the library to work**
+- **Removed callback based api call now the library is ONLY promised based**
+- **If you're coming from a previous version, the upgrade is not breaking you should still keep your production code as it is except if you were using the callback mechanism rather then the promise one.**
 
 
 
