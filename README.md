@@ -22,7 +22,6 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
  
  `yarn add geonames.js`
 
-<br/>
 
 ### 2. Requirements
 You **have to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
