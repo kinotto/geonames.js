@@ -106,11 +106,11 @@ run with:
 
 
 ### 5. Changelog v2.0.0:
-- **Porting to es6 sintax and transpiring to es5**
+- **Porting to es6 sintax and transpiler to es5**
 - **Added yarn and web pack**
-- **Split build in two different files for node and browser environments**
-- **fix major error on browser that was preventing the library to work**
-- **Removed callback based api call now the library is promised based**
+- **Splitted build in two different files for node and browser environments**
+- **Fixed major error on browser that was preventing the library to work**
+- **Removed callback based api call now the library is ONLY promised based**
 - **If you're coming from a previous version, the upgrade is not breaking you should still keep your production code as it is except if you were using the callback mechanism rather then the promise one.**
 
 
