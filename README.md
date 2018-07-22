@@ -55,7 +55,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 
   
   ```javascript
-  var Geonames = require('geonames.js');
+  const Geonames = require('geonames.js');
   geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
@@ -63,30 +63,28 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   ```javascript
   //plain call
   geonames.search({q: 'CONT'}) //get continents
-  .then(function(resp){
+  .then(resp => {
     console.log(resp.geonames);
   })
-  .catch(function(err){
-  })
+  .catch(console.log.bind(this, err));
   ```
   
   ```javascript
   //chaining calls
   geonames.countryInfo({}) 
-  .then(function(countries){
+  .then(countries => {
     return geonames.children({geonameId: countries.geonames[0].geonameId})
   })
-  .then(function(states){
+  .then(states => {
     return geonames.children({geonameId: stateOrProvince.geonames[0].geonameId});
   })
-  .then(function(regions){
+  .then(regions => {
     return geonames.children({geonameId: region.geonames[0].geonameId});
   })
-  .then(function(cities){
+  .then(cities => {
     console.log(cities.geonames);
   })
-  .catch(function(err){
-  })
+  .catch(console.log.bind(this, err));
   ```
 
 
@@ -101,9 +99,8 @@ run with:
 
 `yarn dist:prod (prod bundle)`
 
-unit testing:
+`USERNAME=myusername npm test (unit testing)`
 
-`USERNAME=myusername npm test`
 
 
 
