@@ -102,7 +102,7 @@ run with:
 
 
 
-# changelog:
+### Changelog v2.0.0:
 - **Porting to es6 sintax and transpiring to es5**
 - **Added yarn and web pack**
 - **Split build in two different files for node and browser environments**
