@@ -1,4 +1,4 @@
-# geonames.js
+# geonames.js v2.00 NEW
 if you Need an API to fetch countries, states, regions, cities dynamically here's the library you're looking for
 
 geonames.js is a flexible library for browser and Nodejs 
@@ -96,11 +96,20 @@ run with:
 
 >gulp dist (for the minification)
 
->USERNAME=myusername npm test (for unit testing with mocha)
+>USERNAME=myusername npm test (for unit testing)
 
 
 
 
+### 4. Changelog v2.0:
+- **Porting to es6 sintax and transpiring to es5
+- **Added yarn and web pack
+- **Split build in two different files for node and browser environments
+- **fix major error on browser
+- **Removed callback based api call now is only promised based
+- **If you're coming from a previous version, the upgrade is not breaking you should still keep your production code as it is except if you were using the callback back mechanism rather then the promise one.
+
+geonames.js depends on a native ES6 Promise implementation to be supported. If your environment doesn't support ES6 Promises, you can <a href="https://github.com/stefanpenner/es6-promise">polyfill</a>
 
 
 
