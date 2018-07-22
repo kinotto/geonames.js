@@ -4,10 +4,10 @@ if you Need an API to fetch countries, states, regions, cities dynamically here'
 geonames.js is a flexible library for browser and Nodejs 
 built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> REST api
 
-<img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" />
-
+<img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" style="display:inline" /> <img src="http://img.badgesize.io/kinotto/geonames.js/master/dist/geonames.min.js?max=100000&softmax=200000" alt="not found" />
 
 ![img](https://thumbs.gfycat.com/LegitimateSlushyHydra-max-14mb.gif)
+
 
 
 ### 1. Installation
@@ -30,7 +30,7 @@ You can fetch almost anything taking advandage of the huge amount of information
 
 The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
-- **Nodejs**: (bluebird promise based API)
+- **For CommonJS environments (Nodejs)**: (bluebird promise based API)
 
   
   ```javascript
@@ -68,7 +68,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   })
   ```
 
-- **browser**: (plain ajax xhr call)
+- **alternative**: (plain ajax xhr call)
 
  import the script:
   
