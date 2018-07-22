@@ -65,7 +65,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   .then(resp => {
     console.log(resp.geonames);
   })
-  .catch(console.log.bind(this, err));
+  .catch(console.log.bind(console));
   ```
   
   ```javascript
@@ -83,7 +83,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   .then(cities => {
     console.log(cities.geonames);
   })
-  .catch(console.log.bind(this, err));
+  .catch(console.log.bind(console));
   ```
 
 
