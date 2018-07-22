@@ -5,7 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const baseConfig = {
   entry: './src/geonames.js',
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
