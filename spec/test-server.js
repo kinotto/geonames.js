@@ -31,9 +31,7 @@ describe('Geonames API', () => {
         expect(resp.geonames).to.be.instanceOf(Array);
         done();
       })
-      .catch(err => {
-        done(err);
-      })
+      .catch(err => done(err));
   })
 
   it('should return the country code of Austria', done => {
@@ -41,9 +39,7 @@ describe('Geonames API', () => {
     .then(resp => {
       done();
     })
-    .catch(err => {
-      done(err);
-    })
+    .catch(err => done(err));
   })
 
   it('should return the earthquakes', done => {
@@ -51,9 +47,7 @@ describe('Geonames API', () => {
     .then(resp => {
       done();
     })
-    .catch(err => {
-      done(err);
-    })
+    .catch(err => done(err));
   })
 
   it('should return weather info', done => {
@@ -62,9 +56,7 @@ describe('Geonames API', () => {
       expect(resp.weatherObservations).to.exist;
       done();
     })
-    .catch(err => {
-      done(err);
-    })
+    .catch(err => done(err));
   })
 
   it('should return countries information', done => {
@@ -73,9 +65,7 @@ describe('Geonames API', () => {
       expect(resp.geonames[0].capital).to.exist;
       done();
     })
-    .catch(err => {
-      done(err);
-    })
+    .catch(err => done(err));
   })
 
   it('should return children information', done => {
@@ -84,9 +74,29 @@ describe('Geonames API', () => {
       expect(resp.geonames[0].population).to.exist;
       done();
     })
-    .catch(err => {
-      done(err);
-    })
+    .catch(err => done(err));
+  })
+
+  it('should resolve NearBy', done => {
+    const nearbyAPI = [
+    'findNearby',				
+    'findNearbyPlaceName',			
+    'findNearbyPostalCodes',			
+    'findNearbyStreets',	
+    'findNearbyStreetsOSM',				
+    'findNearByWeather',			
+    'findNearbyWikipedia'
+    ];
+
+    let promises = nearbyAPI.map(api => {
+      return geonames[api]({lat: 48.86, lng: 2.34});
+    });
+
+    Promise.all(promises)
+      .then(() => {
+        done();
+      })
+      .catch(err => done(err));
   })
 
   it('should return cities information', done => {
@@ -100,8 +110,6 @@ describe('Geonames API', () => {
         expect(resp.geonames[0].toponymName).to.exist;
         done();
       })
-      .catch(err => {
-        done(err);
-      })
+      .catch(err => done(err));
   })
 })
