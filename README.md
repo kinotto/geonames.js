@@ -98,7 +98,7 @@ run with:
 
 `yarn dist:prod (prod bundle)`
 
-`USERNAME=myusername npm test (unit testing)`
+`USERNAME=myusername yarn test (unit testing)`
 
 
 
