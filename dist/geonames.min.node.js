@@ -1,0 +1,91 @@
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Geonames"] = factory();
+	else
+		root["Geonames"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar axios = __webpack_require__(1);\n\nvar CONF = {\n  baseUri: 'https://secure.geonames.org/',\n  baseParams: {\n    formatted: true,\n    style: 'full',\n    lan: 'en',\n    encoding: 'JSON',\n    username: 'demo'\n  },\n  geoNamesAPI: ['astergdem', 'children', 'cities', 'contains', 'countryCode', 'countryInfo', 'countrySubdivision', 'earthquakes', 'extendedFindNearby', 'findNearby', 'findNearbyPlaceName', 'findNearbyPostalCodes', 'findNearbyStreets', //only USA\n  'findNearbyStreetsOSM', 'findNearByWeather', 'findNearbyWikipedia', 'findNearestAddress', //only USA\n  'findNearestIntersection', //only USA\n  'findNearestIntersectionOSM', 'findNearbyPOIsOSM', 'geocode', //only USA\n  'get', 'gtopo30', 'hierarchy', 'neighbourhood', //only USA\n  'neighbours', 'ocean', 'postalCodeCountryInfo', 'postalCodeLookup', 'postalCodeSearch', 'rssToGeo', 'search', 'siblings', 'srtm1', 'srtm3', 'timezone', 'weather', 'weatherIcao', 'wikipediaBoundingBox', 'wikipediaSearch']\n};\n\nfunction GeoNames() {\n  var _this = this;\n\n  var _config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};\n\n  if (!_config.username) {\n    console.log('you must provide a username, if you don\\'t have ' + 'one register on http://www.geonames.org/login');\n  }\n  this.config = _extends({}, CONF.baseParams, _config);\n\n  var _loop = function _loop(i) {\n\n    _this[CONF.geoNamesAPI[i]] = function () {\n      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};\n\n      var config = {\n        url: '' + CONF.baseUri + CONF.geoNamesAPI[i] + this.config.encoding,\n        method: 'GET',\n        params: _extends({}, this.config, params)\n      };\n      return promiseBasedApiCall(config);\n    };\n  };\n\n  for (var i = 0; i < CONF.geoNamesAPI.length; i++) {\n    _loop(i);\n  }\n}\n\nvar promiseBasedApiCall = function promiseBasedApiCall(config) {\n  return axios(config).then(function (resp) {\n    return resp.data;\n  });\n};\n\nmodule.exports = GeoNames;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvZ2VvbmFtZXMuanM/OTFkOSJdLCJuYW1lcyI6WyJheGlvcyIsInJlcXVpcmUiLCJDT05GIiwiYmFzZVVyaSIsImJhc2VQYXJhbXMiLCJmb3JtYXR0ZWQiLCJzdHlsZSIsImxhbiIsImVuY29kaW5nIiwidXNlcm5hbWUiLCJnZW9OYW1lc0FQSSIsIkdlb05hbWVzIiwiX2NvbmZpZyIsImNvbnNvbGUiLCJsb2ciLCJjb25maWciLCJpIiwicGFyYW1zIiwidXJsIiwibWV0aG9kIiwicHJvbWlzZUJhc2VkQXBpQ2FsbCIsImxlbmd0aCIsInRoZW4iLCJyZXNwIiwiZGF0YSIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7Ozs7QUFDQSxJQUFNQSxRQUFRLG1CQUFBQyxDQUFRLENBQVIsQ0FBZDs7QUFFQSxJQUFNQyxPQUFPO0FBQ1hDLFdBQVMsOEJBREU7QUFFWEMsY0FBWTtBQUNWQyxlQUFXLElBREQ7QUFFVkMsV0FBTyxNQUZHO0FBR1ZDLFNBQUssSUFISztBQUlWQyxjQUFVLE1BSkE7QUFLVkMsY0FBVTtBQUxBLEdBRkQ7QUFTWEMsZUFBYSxDQUNYLFdBRFcsRUFFWCxVQUZXLEVBR1gsUUFIVyxFQUlYLFVBSlcsRUFLWCxhQUxXLEVBTVgsYUFOVyxFQU9YLG9CQVBXLEVBUVgsYUFSVyxFQVNYLG9CQVRXLEVBVVgsWUFWVyxFQVdYLHFCQVhXLEVBWVgsdUJBWlcsRUFhWCxtQkFiVyxFQWFVO0FBQ3JCLHdCQWRXLEVBZVgsbUJBZlcsRUFnQlgscUJBaEJXLEVBaUJYLG9CQWpCVyxFQWlCVztBQUN0QiwyQkFsQlcsRUFrQmdCO0FBQzNCLDhCQW5CVyxFQW9CWCxtQkFwQlcsRUFxQlgsU0FyQlcsRUFxQkE7QUFDWCxPQXRCVyxFQXVCWCxTQXZCVyxFQXdCWCxXQXhCVyxFQXlCWCxlQXpCVyxFQXlCTTtBQUNqQixjQTFCVyxFQTJCWCxPQTNCVyxFQTRCWCx1QkE1QlcsRUE2Qlgsa0JBN0JXLEVBOEJYLGtCQTlCVyxFQStCWCxVQS9CVyxFQWdDWCxRQWhDVyxFQWlDWCxVQWpDVyxFQWtDWCxPQWxDVyxFQW1DWCxPQW5DVyxFQW9DWCxVQXBDVyxFQXFDWCxTQXJDVyxFQXNDWCxhQXRDVyxFQXVDWCxzQkF2Q1csRUF3Q1gsaUJBeENXO0FBVEYsQ0FBYjs7QUFxREEsU0FBU0MsUUFBVCxHQUFnQztBQUFBOztBQUFBLE1BQWRDLE9BQWMsdUVBQUosRUFBSTs7QUFDOUIsTUFBSSxDQUFDQSxRQUFRSCxRQUFiLEVBQXVCO0FBQ3JCSSxZQUFRQyxHQUFSLENBQVkscURBQ1YsK0NBREY7QUFFRDtBQUNELE9BQUtDLE1BQUwsZ0JBQWtCYixLQUFLRSxVQUF2QixFQUFzQ1EsT0FBdEM7O0FBTDhCLDZCQU9yQkksQ0FQcUI7O0FBUzVCLFVBQUtkLEtBQUtRLFdBQUwsQ0FBaUJNLENBQWpCLENBQUwsSUFBNEIsWUFBc0I7QUFBQSxVQUFiQyxNQUFhLHVFQUFKLEVBQUk7O0FBQ2hELFVBQU1GLFNBQVM7QUFDYkcsa0JBQVFoQixLQUFLQyxPQUFiLEdBQXVCRCxLQUFLUSxXQUFMLENBQWlCTSxDQUFqQixDQUF2QixHQUE2QyxLQUFLRCxNQUFMLENBQVlQLFFBRDVDO0FBRWJXLGdCQUFRLEtBRks7QUFHYkYsNkJBQWEsS0FBS0YsTUFBbEIsRUFBNkJFLE1BQTdCO0FBSGEsT0FBZjtBQUtBLGFBQU9HLG9CQUFvQkwsTUFBcEIsQ0FBUDtBQUNELEtBUEQ7QUFUNEI7O0FBTzlCLE9BQUssSUFBSUMsSUFBSSxDQUFiLEVBQWdCQSxJQUFJZCxLQUFLUSxXQUFMLENBQWlCVyxNQUFyQyxFQUE2Q0wsR0FBN0MsRUFBa0Q7QUFBQSxVQUF6Q0EsQ0FBeUM7QUFVakQ7QUFDRjs7QUFFRCxJQUFNSSxzQkFBc0IsU0FBdEJBLG1CQUFzQixTQUFVO0FBQ3BDLFNBQU9wQixNQUFNZSxNQUFOLEVBQ0pPLElBREksQ0FDQztBQUFBLFdBQVFDLEtBQUtDLElBQWI7QUFBQSxHQURELENBQVA7QUFFRCxDQUhEOztBQUtBQyxPQUFPQyxPQUFQLEdBQWlCZixRQUFqQiIsImZpbGUiOiIwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG5jb25zdCBheGlvcyA9IHJlcXVpcmUoJ2F4aW9zJyk7XG5cbmNvbnN0IENPTkYgPSB7XG4gIGJhc2VVcmk6ICdodHRwczovL3NlY3VyZS5nZW9uYW1lcy5vcmcvJyxcbiAgYmFzZVBhcmFtczoge1xuICAgIGZvcm1hdHRlZDogdHJ1ZSxcbiAgICBzdHlsZTogJ2Z1bGwnLFxuICAgIGxhbjogJ2VuJyxcbiAgICBlbmNvZGluZzogJ0pTT04nLCBcbiAgICB1c2VybmFtZTogJ2RlbW8nXG4gIH0sXG4gIGdlb05hbWVzQVBJOiBbXG4gICAgJ2FzdGVyZ2RlbScsXG4gICAgJ2NoaWxkcmVuJyxcbiAgICAnY2l0aWVzJyxcbiAgICAnY29udGFpbnMnLFxuICAgICdjb3VudHJ5Q29kZScsXG4gICAgJ2NvdW50cnlJbmZvJyxcbiAgICAnY291bnRyeVN1YmRpdmlzaW9uJyxcbiAgICAnZWFydGhxdWFrZXMnLFxuICAgICdleHRlbmRlZEZpbmROZWFyYnknLFxuICAgICdmaW5kTmVhcmJ5JyxcbiAgICAnZmluZE5lYXJieVBsYWNlTmFtZScsXG4gICAgJ2ZpbmROZWFyYnlQb3N0YWxDb2RlcycsXG4gICAgJ2ZpbmROZWFyYnlTdHJlZXRzJywgLy9vbmx5IFVTQVxuICAgICdmaW5kTmVhcmJ5U3RyZWV0c09TTScsXG4gICAgJ2ZpbmROZWFyQnlXZWF0aGVyJyxcbiAgICAnZmluZE5lYXJieVdpa2lwZWRpYScsXG4gICAgJ2ZpbmROZWFyZXN0QWRkcmVzcycsIC8vb25seSBVU0FcbiAgICAnZmluZE5lYXJlc3RJbnRlcnNlY3Rpb24nLCAvL29ubHkgVVNBXG4gICAgJ2ZpbmROZWFyZXN0SW50ZXJzZWN0aW9uT1NNJyxcbiAgICAnZmluZE5lYXJieVBPSXNPU00nLFxuICAgICdnZW9jb2RlJywgLy9vbmx5IFVTQVxuICAgICdnZXQnLFxuICAgICdndG9wbzMwJyxcbiAgICAnaGllcmFyY2h5JyxcbiAgICAnbmVpZ2hib3VyaG9vZCcsIC8vb25seSBVU0FcbiAgICAnbmVpZ2hib3VycycsXG4gICAgJ29jZWFuJyxcbiAgICAncG9zdGFsQ29kZUNvdW50cnlJbmZvJyxcbiAgICAncG9zdGFsQ29kZUxvb2t1cCcsXG4gICAgJ3Bvc3RhbENvZGVTZWFyY2gnLFxuICAgICdyc3NUb0dlbycsXG4gICAgJ3NlYXJjaCcsXG4gICAgJ3NpYmxpbmdzJyxcbiAgICAnc3J0bTEnLFxuICAgICdzcnRtMycsXG4gICAgJ3RpbWV6b25lJyxcbiAgICAnd2VhdGhlcicsXG4gICAgJ3dlYXRoZXJJY2FvJyxcbiAgICAnd2lraXBlZGlhQm91bmRpbmdCb3gnLFxuICAgICd3aWtpcGVkaWFTZWFyY2gnXG4gIF1cbn1cblxuZnVuY3Rpb24gR2VvTmFtZXMoX2NvbmZpZyA9IHt9KSB7XG4gIGlmICghX2NvbmZpZy51c2VybmFtZSkge1xuICAgIGNvbnNvbGUubG9nKCd5b3UgbXVzdCBwcm92aWRlIGEgdXNlcm5hbWUsIGlmIHlvdSBkb25cXCd0IGhhdmUgJyArXG4gICAgICAnb25lIHJlZ2lzdGVyIG9uIGh0dHA6Ly93d3cuZ2VvbmFtZXMub3JnL2xvZ2luJyk7XG4gIH1cbiAgdGhpcy5jb25maWcgPSB7Li4uQ09ORi5iYXNlUGFyYW1zLCAuLi5fY29uZmlnfTtcblxuICBmb3IgKGxldCBpID0gMDsgaSA8IENPTkYuZ2VvTmFtZXNBUEkubGVuZ3RoOyBpKyspIHtcblxuICAgIHRoaXNbQ09ORi5nZW9OYW1lc0FQSVtpXV0gPSBmdW5jdGlvbihwYXJhbXMgPSB7fSkge1xuICAgICAgY29uc3QgY29uZmlnID0ge1xuICAgICAgICB1cmw6IGAke0NPTkYuYmFzZVVyaX0ke0NPTkYuZ2VvTmFtZXNBUElbaV19JHt0aGlzLmNvbmZpZy5lbmNvZGluZ31gLFxuICAgICAgICBtZXRob2Q6ICdHRVQnLFxuICAgICAgICBwYXJhbXM6IHsgLi4udGhpcy5jb25maWcsIC4uLnBhcmFtcyB9XG4gICAgICB9XG4gICAgICByZXR1cm4gcHJvbWlzZUJhc2VkQXBpQ2FsbChjb25maWcpO1xuICAgIH1cbiAgfVxufVxuXG5jb25zdCBwcm9taXNlQmFzZWRBcGlDYWxsID0gY29uZmlnID0+IHtcbiAgcmV0dXJuIGF4aW9zKGNvbmZpZylcbiAgICAudGhlbihyZXNwID0+IHJlc3AuZGF0YSk7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gR2VvTmFtZXM7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC4vc3JjL2dlb25hbWVzLmpzIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///0\n");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"axios\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJheGlvc1wiPzI1MzkiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoiMS5qcyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gcmVxdWlyZShcImF4aW9zXCIpO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwiYXhpb3NcIlxuLy8gbW9kdWxlIGlkID0gMVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///1\n");
+
+/***/ })
+/******/ ]);
+});

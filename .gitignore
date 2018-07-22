@@ -3,3 +3,4 @@ bower_components
 github_page/node_modules
 .nyc_output
 coverage
+.vscode/

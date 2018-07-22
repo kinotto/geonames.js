@@ -1,56 +1,39 @@
 {
   "name": "geonames.js",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "homepage": "https://github.com/kinotto/geonames.js",
-  "description": "REST api to fetch any geoname . A flexible library for browser and node.js usage built on top http://www.geonames.org/",
+  "description": "REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/",
   "main": "src/geonames.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "mocha ./spec/test-server.js --timeout 50000",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "test-debug": "mocha ./spec/test-server.js --nolazy --inspect-brk=9229",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "dist": "webpack"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kinotto/geonames.js.git"
-  },
+  "repository": "git+https://github.com/kinotto/geonames.js.git",
   "author": "Karim Abdelcadir <kinotto88@yahoo.it>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kinotto/geonames.js/issues"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "request": "^2.87.0"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "chai": "^3.5.0",
-    "connect-livereload": "^0.5.4",
     "coveralls": "^2.12.0",
-    "del": "^2.2.2",
-    "express": "^4.13.3",
-    "gulp": "^3.9.0",
-    "gulp-build": "^0.5.3",
-    "gulp-debug": "^3.0.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-minify-html": "^1.0.6",
-    "gulp-open": "^1.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-rev": "^7.1.2",
-    "gulp-serve": "^1.0.0",
-    "gulp-sync": "^0.1.4",
-    "gulp-uglify": "^2.0.0",
-    "gulp-usemin": "^0.3.25",
-    "gulp-util": "^3.0.7",
-    "jshint": "^2.9.4",
     "mocha": "^3.2.0",
     "nyc": "^10.1.2",
     "opener": "^1.4.1",
     "require-dir": "^0.3.1",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
-    "tiny-lr": "^0.2.1"
+    "tiny-lr": "^0.2.1",
+    "webpack": "3.8.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }
