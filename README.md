@@ -44,7 +44,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
     ```javascript
        const Geonames = require('geonames.js/dist/geonames.min.js');
     ```
-   - ***alternative for old browser applications***
+   - ***alternative for browser***
     ```html
       <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
     ```
