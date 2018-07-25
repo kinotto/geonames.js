@@ -4,10 +4,10 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["axios"], factory);
 	else if(typeof exports === 'object')
-		exports["geonames.js"] = factory(require("axios"));
+		exports["Geonames"] = factory(require("axios"));
 	else
-		root["geonames.js"] = factory(root["axios"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_axios__) {
+		root["Geonames"] = factory(root["axios"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_axios__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -195,19 +195,20 @@ const pkg = __importStar(__webpack_require__(/*! ../package.json */ "../package.
 const axios_1 = __importDefault(__webpack_require__(/*! axios */ "axios"));
 const geonames_config_1 = __webpack_require__(/*! ./geonames.config */ "./geonames.config.ts");
 class Geonames {
-    constructor(config) {
+    constructor(options) {
+        this.options = options;
         this.version = pkg.version;
-        this.config = Object.assign({}, geonames_config_1.baseParams, config);
-        if (config.username === null) {
+        if (!options || !options.username) {
             const errNoUsernameMessage = "you must provide a username, if you don't have one register on http://www.geonames.org/login";
             throw new Error(errNoUsernameMessage);
         }
+        this.config = Object.assign({}, geonames_config_1.baseParams, options);
         const api = axios_1.default.create({
             baseURL: geonames_config_1.baseUri
         });
         for (let apiName of geonames_config_1.geoNamesAPI) {
             const fullApiName = `${apiName}${this.config.encoding}`;
-            this[fullApiName] = async (params) => {
+            this[apiName] = async (params) => {
                 const response = await api.get(fullApiName, {
                     params: Object.assign({ username: this.config.username, lang: this.config.lan }, params)
                 });
@@ -217,6 +218,7 @@ class Geonames {
     }
 }
 exports.Geonames = Geonames;
+exports.default = Geonames;
 
 
 /***/ }),
@@ -244,6 +246,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_axios__;
 
 /***/ })
 
-/******/ });
+/******/ })["Geonames"];
 });
 //# sourceMappingURL=geonames.js.map

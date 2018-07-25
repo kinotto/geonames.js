@@ -1,7 +1,6 @@
 'use strict'
 const webpack = require('webpack')
 const path = require('path')
-const pkg = require('./package.json')
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development'
 const IS_PRODUCTION = ENVIRONMENT === 'production'
@@ -41,9 +40,11 @@ const webpackConfig = {
   output: {
     path: OUTPUT_PATH,
     publicPath: '/',
-    library: pkg.name,
+    library: 'Geonames',
     libraryTarget: 'umd',
-    filename: IS_PRODUCTION ? '[name].min.js' : '[name].js'
+    libraryExport: 'Geonames',
+    filename: IS_PRODUCTION ? '[name].min.js' : '[name].js',
+    globalObject: 'this'
   },
   module: {
     rules: [

@@ -5,3 +5,7 @@ export interface GeonamesConfig {
   style: string
   username: string | null
 }
+
+export interface GeonamesOptions extends Partial<GeonamesConfig> {
+  username: string | null
+}

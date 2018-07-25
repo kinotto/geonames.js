@@ -38,11 +38,12 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 - **Import the library**:
    - ***server usage (NodeJS)***
     ```javascript
-       const Geonames = require('geonames.js/dist/geonames.min.node.js');
+       const Geonames = require('geonames.js')
     ```
    - ***browser usage (React, Angular, Vue etc.)***
     ```javascript
-       const Geonames = require('geonames.js/dist/geonames.min.js');
+       import Geonames from 'geonames.js'; /* es module */
+       const Geonames = require('geonames.js'); /* umd */
     ```
    - ***alternative for browser***
     ```html
@@ -113,9 +114,11 @@ Feel free to contribute, any help is really appreciated :)
 
 run with:
 
-`yarn dist (dev bundle)`
+`yarn build-dev (dev bundle)`
 
-`yarn dist:prod (prod bundle)`
+`yarn build (prod bundle)`
+
+`yarn build:all (both - for packaging)`
 
 `USERNAME=myusername yarn test (unit testing)`
 
