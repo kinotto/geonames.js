@@ -38,11 +38,12 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 - **Import the library**:
    - ***server usage (NodeJS)***
     ```javascript
-       const Geonames = require('geonames.js/dist/geonames.min.node.js');
+       const Geonames = require('geonames.js')
     ```
    - ***browser usage (React, Angular, Vue etc.)***
     ```javascript
-       const Geonames = require('geonames.js/dist/geonames.min.js');
+       import Geonames from 'geonames.js'; /* es module */
+       const Geonames = require('geonames.js'); /* umd */
     ```
    - ***alternative for browser***
     ```html
@@ -52,23 +53,43 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   
 - **Usage**:
 
+  Since the library return promises, you can use either async/await or promise-based syntax
   
   ```javascript
   const geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
-
+  _plain call_
   ```javascript
-  //plain call
+  // async/await
+  try{
+    const continents = await geonames.search({q: 'CONT'}) //get continents
+  }catch(err){
+    console.error(err);
+  }
+  
+  // promise
   geonames.search({q: 'CONT'}) //get continents
   .then(resp => {
     console.log(resp.geonames);
   })
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
   ```
   
-  ```javascript
-  //chaining calls
+  _chaining calls_
+  ```javascript 
+  // async/await
+  try{
+    const countries = await geonames.countryInfo({}) //get continents
+    const states = await geonames.children({geonameId: countries.geonames[0].geonameId})
+    const regions = await geonames.children({geonameId: states.geonames[0].geonameId});
+    const cities = await geonames.children({geonameId: regions.geonames[0].geonameId});
+    console.log(cities.geonames);
+  }catch(err){
+    console.error(err);
+  }
+
+  // promise
   geonames.countryInfo({}) 
   .then(countries => {
     return geonames.children({geonameId: countries.geonames[0].geonameId})
@@ -93,9 +114,11 @@ Feel free to contribute, any help is really appreciated :)
 
 run with:
 
-`yarn dist (dev bundle)`
+`yarn build-dev (dev bundle)`
 
-`yarn dist:prod (prod bundle)`
+`yarn build (prod bundle)`
+
+`yarn build:all (both - for packaging)`
 
 `USERNAME=myusername yarn test (unit testing)`
 
