@@ -88,6 +88,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
     console.error(err);
   }
 
+  // promise
   geonames.countryInfo({}) 
   .then(countries => {
     return geonames.children({geonameId: countries.geonames[0].geonameId})
