@@ -13,6 +13,12 @@
   },
   "repository": "git+https://github.com/kinotto/geonames.js.git",
   "author": "Karim Abdelcadir <kinotto88@yahoo.it>",
+  "contributors": [
+    {
+      "name": "Vito Macchia",
+      "email": "vito.macchia@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kinotto/geonames.js/issues"
