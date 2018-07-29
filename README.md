@@ -15,7 +15,11 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 ### 1. Installation
 
- `npm install --save geonames.js` or `yarn add geonames.js`
+ `npm install --save geonames.js`
+ 
+ or
+ 
+ `yarn add geonames.js`
 
 
 ### 2. Requirements
@@ -55,7 +59,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   const geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
-  - ***plain call***
+  ***plain call***
   ```javascript
   // async/await
   try{
@@ -72,7 +76,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   .catch(err => console.error(err));
   ```
   
-  - ***chaining calls***
+  ***chaining calls***
   ```javascript 
   // async/await
   try{
