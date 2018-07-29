@@ -1,19 +1,36 @@
 <html>
+
 <head>
   <meta charset="utf-8">
 </head>
+
 <body>
-  Test Browser
-  <script src="../dist/geonames.min.js"></script>
+  <h1>Test Browser</h1>
+  <p id="usage" style="display: none">Usage: YOUR_SERVER/spec/test-browser.html?username=YOUR_USERNAME</p>
+  <ul id="continents"></ul>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.2/qs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <script src="../dist/geonames.js"></script>
   <script>
-    var geonames = new Geonames({ username: null, lan: 'en', encoding: 'JSON' });
+    var searchParams = Qs.parse(window.location.search.replace(/^\?/, ''));
+    if (!searchParams.username) {
+      document.querySelector('#usage').style.display = ''
+    }
+    var geonames = new Geonames({ username: searchParams.username, lan: 'en', encoding: 'JSON' });
     geonames.search({ q: 'CONT' })
       .then(resp => {
         console.log(resp.geonames);
+        var list = document.querySelector('#continents')
+        for (var i = 0; i < resp.geonames.length; i++) {
+          var li = document.createElement('li');
+          li.textContent = resp.geonames[i].name
+          list.appendChild(li)
+        }
       })
       .catch(err => {
         console.log(err);
       })
   </script>
 </body>
+
 </html>

@@ -1,18 +1,25 @@
 {
   "name": "geonames.js",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "homepage": "https://github.com/kinotto/geonames.js",
   "description": "REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/",
-  "main": "src/geonames.js",
+  "main": "dist/geonames.min.js",
   "scripts": {
     "test": "mocha ./spec/test-server.js --timeout 50000",
     "test-debug": "mocha ./spec/test-server.js --nolazy --inspect-brk=9229",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "dist": "webpack --config webpack.config-dev.js",
-    "dist:prod": "webpack --config webpack.config-prod.js"
+    "build": "cross-env NODE_ENV=production webpack",
+    "build-dev": "cross-env NODE_ENV=development webpack",
+    "build:all": "rm -rf dist/* && npm run build && npm run build-dev"
   },
   "repository": "git+https://github.com/kinotto/geonames.js.git",
   "author": "Karim Abdelcadir <kinotto88@yahoo.it>",
+  "contributors": [
+    {
+      "name": "Vito Macchia",
+      "email": "vito.macchia@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kinotto/geonames.js/issues"
@@ -27,6 +34,7 @@
     "babel-preset-env": "^1.7.0",
     "chai": "^3.5.0",
     "coveralls": "^2.12.0",
+    "cross-env": "^5.2.0",
     "mocha": "^3.2.0",
     "nyc": "^10.1.2",
     "opener": "^1.4.1",
@@ -34,8 +42,11 @@
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
     "tiny-lr": "^0.2.1",
+    "ts-loader": "^4.4.2",
+    "typescript": "^2.9.2",
     "uglifyjs-webpack-plugin": "^1.2.7",
-    "webpack": "3.8.1",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
     "webpack-node-externals": "^1.7.2"
   }
 }
