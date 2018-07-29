@@ -15,16 +15,12 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 ### 1. Installation
 
- `npm install --save geonames.js`
- 
- or
- 
- `yarn add geonames.js`
+ `npm install --save geonames.js` or `yarn add geonames.js`
 
 
 ### 2. Requirements
 You **have to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
-in order to get the username that will be necessary for the api to work
+in order to get the username that will be necessary for the api to work.
 
 geonames.js depends on a native ES6 Promise implementation to be supported. If your environment doesn't support ES6 Promises, you can use a <a href="https://github.com/stefanpenner/es6-promise">polyfill</a>.
 
