@@ -59,7 +59,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   const geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
-  ***plain call***
+  _plain call_
   ```javascript
   // async/await
   try{
@@ -76,7 +76,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   .catch(err => console.error(err));
   ```
   
-  ***chaining calls***
+  _chaining calls_
   ```javascript 
   // async/await
   try{
