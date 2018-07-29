@@ -9,8 +9,8 @@
     "test-debug": "mocha ./spec/test-server.js --nolazy --inspect-brk=9229",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "build": "cross-env NODE_ENV=production webpack",
-    "build-dev": "cross-env NODE_ENV=development webpack",
-    "build:all": "rm -rf dist/* && npm run build && npm run build-dev"
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "build:all": "rm -rf dist/* && npm run build && npm run build:dev"
   },
   "repository": "git+https://github.com/kinotto/geonames.js.git",
   "author": "Karim Abdelcadir <kinotto88@yahoo.it>",
