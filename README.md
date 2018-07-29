@@ -1,4 +1,4 @@
-# geonames.js v2.00 NEW (see [changelog](#5-changelog-v200))
+# geonames.js v2.00 NEW (see [changelog](#5-changelog-v210))
 if you Need an API to fetch countries, states, regions, cities dynamically here's the library you're looking for
 
 geonames.js is a flexible library for browser and Nodejs 
@@ -125,16 +125,11 @@ run with:
 
 
 
-
-
-### 5. Changelog v2.0.0:
-- **Fixed major error on browser that was preventing the library to work**
-- **Removed callback based api call now the library is ONLY promised based**
-- **If you're coming from a previous version, the upgrade is not breaking you should still keep your production code as it is except if you were using the callback mechanism rather then the promise one.**
-- **Porting to es6 sintax with transpiling to es5**
-- **Added yarn and web pack**
-- **Splitted build in two different files for node and browser environments**
-
+### 5. Changelog v2.1.0:
+- **Porting to Typescript**
+- **Added typings file**
+- **Added async/await syntax**
+- **Reduced bundle size**
 
 
 ### 6. License:
