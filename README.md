@@ -59,7 +59,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   const geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
   ```
 
-  _plain call_
+  - ***plain call***
   ```javascript
   // async/await
   try{
@@ -76,7 +76,7 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
   .catch(err => console.error(err));
   ```
   
-  _chaining calls_
+  - ***chaining calls***
   ```javascript 
   // async/await
   try{
@@ -122,8 +122,7 @@ run with:
 
 `USERNAME=myusername yarn test (unit testing)`
 
-
-
+<br/>
 
 ### 5. Changelog v2.1.0:
 - **Porting to Typescript**
@@ -131,6 +130,7 @@ run with:
 - **Added async/await syntax**
 - **Reduced bundle size**
 
+<br/>
 
 ### 6. License:
 MIT License
