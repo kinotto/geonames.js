@@ -1,8 +1,8 @@
 # geonames.js v2.1.0 NEW (see [changelog](#5-changelog-v210))
-if you Need an API to fetch countries, states, regions, cities dynamically here's the library you're looking for
+If you need an API to dynamically fetch countries, states, regions, cities here's the library you're looking for!
 
-geonames.js is a flexible library for browser and Nodejs 
-built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> REST api
+`geonames.js` is a flexible library for browser and Nodejs 
+built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> REST API.
 
 <img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" style="display:inline" /> <img src="https://david-dm.org/kinotto/geonames.js.svg" alt="not found" style="display:inline" /> <img src="http://img.badgesize.io/kinotto/geonames.js/master/dist/geonames.min.js?max=100000&softmax=200000" alt="not found" />
 
@@ -15,25 +15,29 @@ built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> 
 
 ### 1. Installation
 
- `npm install --save geonames.js`
- 
- or
- 
- `yarn add geonames.js`
+```sh
+npm install --save geonames.js
+```
+
+or
+
+```sh
+yarn add geonames.js
+```
 
 
 ### 2. Requirements
 You **have to** register (it's free) on <a href="http://www.geonames.org/login">Geonames.org</a>
-in order to get the username that will be necessary for the api to work.
+in order to get the username that will be necessary for the API to work.
 
 geonames.js depends on a native ES6 Promise implementation to be supported. If your environment doesn't support ES6 Promises, you can use a <a href="https://github.com/stefanpenner/es6-promise">polyfill</a>.
 
 ### 3. Usage:
 
 
-You can fetch almost anything taking advandage of the huge amount of information provided by geonames.org, It contains over 10 million geographical names and consists of over 9 million unique features whereof 2.8 million populated places and 5.5 million alternate names.
+You can fetch almost anything by taking advandage of the huge amount of information provided by geonames.org. It contains over 10 million geographical names and consists of over 9 million unique features whereof 2.8 million populated places and 5.5 million alternate names.
 
-The list of available API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
+The list of available options in the API is in <a href="http://www.geonames.org/export/ws-overview.html">here</a> under the webservice column.
 
 - **Import the library**:
    - ***server usage (NodeJS)***
@@ -109,18 +113,17 @@ The list of available API is in <a href="http://www.geonames.org/export/ws-overv
 
 
 ### 4. Contribution:
-Feel free to contribute, any help is really appreciated :)
-
+Feel free to contribute; any help is really appreciated :)
 
 run with:
 
-`yarn build-dev (dev bundle)`
+```sh
+yarn build-dev (dev bundle)
+yarn build (prod bundle)
+yarn build:all (both - for packaging)
+USERNAME=myusername yarn test (unit testing)
+```
 
-`yarn build (prod bundle)`
-
-`yarn build:all (both - for packaging)`
-
-`USERNAME=myusername yarn test (unit testing)`
 
 <br/>
 
@@ -134,3 +137,18 @@ run with:
 
 ### 6. License:
 MIT 2017 License <a href="https://github.com/kinotto">Karim Abdelcadir</a>
+
+### 7. Troubleshooting
+
+If using TSX and see the 
+
+```
+Could not find a declaration file for module 'geonames.js'. ... implicitly has an 'any' type.
+```
+
+error, try adding
+
+```typescript
+// index.ts
+declare module "geonames.js";
+```
