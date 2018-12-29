@@ -137,3 +137,18 @@ USERNAME=myusername yarn test (unit testing)
 
 ### 6. License:
 MIT 2017 License <a href="https://github.com/kinotto">Karim Abdelcadir</a>
+
+### 7. Troubleshooting
+
+If using TSX and see the 
+
+```
+Could not find a declaration file for module 'geonames.js'. ... implicitly has an 'any' type.
+```
+
+error, try adding
+
+```typescript
+// index.ts
+declare module "geonames.js";
+```
