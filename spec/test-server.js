@@ -12,12 +12,18 @@ describe('Geonames', () => {
       "you must provide a username, if you don't have one register on http://www.geonames.org/login"
     )
   })
-})
 
-describe('Geonames API', () => {
-  var geonames
-  beforeEach(() => {
-    geonames = new Geonames({ username, lan: 'en', encoding: 'JSON' })
+  it('should use the free tier if no token is provided', () => {
+    const expectedDomain = "https://secure.geonames.org/"
+    const settings = {
+      username,
+      lan: 'en',
+      encoding: 'JSON',
+    }
+    const geonames = new Geonames(settings)
+    expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
+    expect(geonames.options).to.be.an('Object').that.not.have.keys('token').that.include({ token: null})
+    expect(geonames.config).to.be.an('Object').that.include(settings)
   })
 
   it('should return continent names ', done => {
