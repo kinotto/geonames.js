@@ -7,6 +7,7 @@ export class Geonames {
   private config: GeonamesConfig
 
   public readonly version: string = pkg.version
+  public readonly uri: string 
 
   constructor(readonly options: NonNullable<GeonamesOptions>) {
     if (!options || !options.username) {
@@ -17,10 +18,10 @@ export class Geonames {
     this.config = { ...baseParams, ...options }
 
     const { username, token } = this.config
-    const endpointUri = token ? baseUriCommercial : baseUri
+    this.uri = token ? baseUriCommercial : baseUri
 
     const api = axios.create({
-      baseURL: endpointUri
+      baseURL: this.uri
     })
 
     for (let apiName of geoNamesAPI) {
