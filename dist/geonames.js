@@ -122,9 +122,11 @@ exports.baseParams = {
     formatted: true,
     lan: 'en',
     style: 'full',
-    username: null
+    username: null,
+    token: null,
 };
 exports.baseUri = 'https://secure.geonames.org/';
+exports.baseUriCommercial = 'https://secure.geonames.net/';
 exports.geoNamesAPI = [
     'astergdem',
     'children',
@@ -203,14 +205,16 @@ class Geonames {
             throw new Error(errNoUsernameMessage);
         }
         this.config = Object.assign({}, geonames_config_1.baseParams, options);
+        const { username, token } = this.config;
+        const endpointUri = token ? geonames_config_1.baseUriCommercial : geonames_config_1.baseUri;
         const api = axios_1.default.create({
-            baseURL: geonames_config_1.baseUri
+            baseURL: endpointUri
         });
         for (let apiName of geonames_config_1.geoNamesAPI) {
             const fullApiName = `${apiName}${this.config.encoding}`;
             this[apiName] = async (params) => {
                 const response = await api.get(fullApiName, {
-                    params: Object.assign({ username: this.config.username, lang: this.config.lan }, params)
+                    params: Object.assign({ username }, (token && { token }), { lang: this.config.lan }, params)
                 });
                 return response.data;
             };
