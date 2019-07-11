@@ -1,7 +1,7 @@
 import * as pkg from '../package.json'
 import axios from 'axios'
 import { GeonamesConfig, GeonamesOptions } from './geonames.types'
-import { baseParams, baseUri, geoNamesAPI } from './geonames.config'
+import { baseParams, baseUri, baseUriCommercial, geoNamesAPI } from './geonames.config'
 
 export class Geonames {
   private config: GeonamesConfig
@@ -17,8 +17,10 @@ export class Geonames {
     this.config = { ...baseParams, ...options }
 
     const { username, token } = this.config
+    const endpointUri = token ? baseUriCommercial : baseUri
+
     const api = axios.create({
-      baseURL: baseUri
+      baseURL: endpointUri
     })
 
     for (let apiName of geoNamesAPI) {
