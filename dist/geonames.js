@@ -230,7 +230,7 @@ exports.default = Geonames;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/karim/Workspace/geonames/src/geonames.ts */"./geonames.ts");
+module.exports = __webpack_require__(/*! /home/k/projects/geonames.js/src/geonames.ts */"./geonames.ts");
 
 
 /***/ }),
