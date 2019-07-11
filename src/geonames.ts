@@ -16,6 +16,7 @@ export class Geonames {
     }
     this.config = { ...baseParams, ...options }
 
+    const { username, token } = this.config
     const api = axios.create({
       baseURL: baseUri
     })
@@ -25,7 +26,8 @@ export class Geonames {
       this[apiName] = async (params: any) => {
         const response = await api.get(fullApiName, {
           params: {
-            username: this.config.username,
+            username,
+            ...(token && {token}),
             lang: this.config.lan,
             ...params
           }
