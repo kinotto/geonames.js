@@ -5,7 +5,8 @@ export const baseParams: GeonamesConfig = {
   formatted: true,
   lan: 'en',
   style: 'full',
-  username: null
+  username: null,
+  token: null,
 }
 
 export const baseUri = 'https://secure.geonames.org/'
