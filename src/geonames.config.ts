@@ -10,6 +10,7 @@ export const baseParams: GeonamesConfig = {
 }
 
 export const baseUri = 'https://secure.geonames.org/'
+export const baseUriCommercial = 'https://secure.geonames.net/'
 
 export const geoNamesAPI = [
   'astergdem',
