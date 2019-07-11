@@ -26,6 +26,27 @@ describe('Geonames', () => {
     expect(geonames.config).to.be.an('Object').that.include(settings)
   })
 
+  it('should use the commercial tier if token is provided', () => {
+    const expectedDomain = "https://secure.geonames.net/"
+    const settings = {
+      username,
+      token: "dummyToken",
+      lan: 'en',
+      encoding: 'JSON',
+    }
+    const geonames = new Geonames(settings)
+    expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
+    expect(geonames.options).to.be.an('object').that.have.any.keys('token')
+    expect(geonames.config).to.be.an('object').that.include({token: settings.token})
+  })
+})
+
+describe('Geonames API', () => {
+  var geonames
+  beforeEach(() => {
+    geonames = new Geonames({ username, lan: 'en', encoding: 'JSON' })
+  })
+
   it('should return continent names ', done => {
     geonames
       .search({ q: 'CONT' })
