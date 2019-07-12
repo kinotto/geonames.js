@@ -1,12 +1,13 @@
 import * as pkg from '../package.json'
 import axios from 'axios'
 import { GeonamesConfig, GeonamesOptions } from './geonames.types'
-import { baseParams, baseUri, geoNamesAPI } from './geonames.config'
+import { baseParams, baseUri, baseUriCommercial, geoNamesAPI } from './geonames.config'
 
 export class Geonames {
   private config: GeonamesConfig
 
   public readonly version: string = pkg.version
+  public readonly uri: string 
 
   constructor(readonly options: NonNullable<GeonamesOptions>) {
     if (!options || !options.username) {
@@ -16,8 +17,11 @@ export class Geonames {
     }
     this.config = { ...baseParams, ...options }
 
+    const { username, token } = this.config
+    this.uri = token ? baseUriCommercial : baseUri
+
     const api = axios.create({
-      baseURL: baseUri
+      baseURL: this.uri
     })
 
     for (let apiName of geoNamesAPI) {
@@ -25,7 +29,8 @@ export class Geonames {
       this[apiName] = async (params: any) => {
         const response = await api.get(fullApiName, {
           params: {
-            username: this.config.username,
+            username,
+            ...(token && {token}),
             lang: this.config.lan,
             ...params
           }

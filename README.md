@@ -57,11 +57,31 @@ The list of available options in the API is in <a href="http://www.geonames.org/
   
 - **Usage**:
 
-  Since the library return promises, you can use either async/await or promise-based syntax
-  
+  Initialize the Geoames using your settings:
+
+  _free WS_
   ```javascript
-  const geonames = new Geonames({username: 'myusername', lan: 'en', encoding: 'JSON'});
+  const geonames = new Geonames({
+    username: 'myusername',
+    lan: 'en',
+    encoding: 'JSON'
+  });
   ```
+
+  _commercial WS_
+
+  To use the commercial tier just define your `token`:
+
+  ```javascript
+  const geonames = new Geonames({
+    username: 'myusername',
+    token: 'mytoken',
+    lan: 'en',
+    encoding: 'JSON'
+  });
+  ```
+
+  Since the library return promises, you can use either async/await or promise-based syntax
 
   _plain call_
   ```javascript

@@ -103,7 +103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /*! exports provided: name, version, homepage, description, main, scripts, repository, author, contributors, license, bugs, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"geonames.js","version":"2.1.0","homepage":"https://github.com/kinotto/geonames.js","description":"REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/","main":"dist/geonames.min.js","scripts":{"test":"mocha ./spec/test-server.js --timeout 50000","test-debug":"mocha ./spec/test-server.js --nolazy --inspect-brk=9229","coverage":"nyc npm test && nyc report --reporter=text-lcov | coveralls","build":"cross-env NODE_ENV=production webpack","build:dev":"cross-env NODE_ENV=development webpack","build:all":"rm -rf dist/* && npm run build && npm run build:dev"},"repository":"git+https://github.com/kinotto/geonames.js.git","author":"Karim Abdelcadir <kinotto88@yahoo.it>","contributors":[{"name":"Vito Macchia","email":"vito.macchia@gmail.com"}],"license":"MIT","bugs":{"url":"https://github.com/kinotto/geonames.js/issues"},"dependencies":{"axios":"^0.18.0"},"devDependencies":{"babel-core":"^6.26.3","babel-loader":"^7.1.5","babel-plugin-transform-object-rest-spread":"^6.26.0","babel-preset-env":"^1.7.0","chai":"^3.5.0","coveralls":"^2.12.0","cross-env":"^5.2.0","mocha":"^3.2.0","nyc":"^10.1.2","opener":"^1.4.1","require-dir":"^0.3.1","sinon":"^1.17.7","sinon-chai":"^2.8.0","tiny-lr":"^0.2.1","ts-loader":"^4.4.2","typescript":"^2.9.2","uglifyjs-webpack-plugin":"^1.2.7","webpack":"^4.16.2","webpack-cli":"^3.1.0","webpack-node-externals":"^1.7.2"}};
+module.exports = {"name":"geonames.js","version":"3.0.0","homepage":"https://github.com/kinotto/geonames.js","description":"REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/","main":"dist/geonames.min.js","scripts":{"test":"mocha ./spec/test-server.js --timeout 50000","test-debug":"mocha ./spec/test-server.js --nolazy --inspect-brk=9229","coverage":"nyc npm test && nyc report --reporter=text-lcov | coveralls","build":"cross-env NODE_ENV=production webpack","build:dev":"cross-env NODE_ENV=development webpack","build:all":"rm -rf dist/* && npm run build && npm run build:dev"},"repository":"git+https://github.com/kinotto/geonames.js.git","author":"Karim Abdelcadir <kinotto88@yahoo.it>","contributors":[{"name":"Vito Macchia","email":"vito.macchia@gmail.com"}],"license":"MIT","bugs":{"url":"https://github.com/kinotto/geonames.js/issues"},"dependencies":{"axios":"^0.18.0"},"devDependencies":{"babel-core":"^6.26.3","babel-loader":"^7.1.5","babel-plugin-transform-object-rest-spread":"^6.26.0","babel-preset-env":"^1.7.0","chai":"^3.5.0","coveralls":"^2.12.0","cross-env":"^5.2.0","mocha":"^3.2.0","nyc":"^10.1.2","opener":"^1.4.1","require-dir":"^0.3.1","sinon":"^1.17.7","sinon-chai":"^2.8.0","tiny-lr":"^0.2.1","ts-loader":"^4.4.2","typescript":"^2.9.2","uglifyjs-webpack-plugin":"^1.2.7","webpack":"^4.16.2","webpack-cli":"^3.1.0","webpack-node-externals":"^1.7.2"}};
 
 /***/ }),
 
@@ -122,9 +122,11 @@ exports.baseParams = {
     formatted: true,
     lan: 'en',
     style: 'full',
-    username: null
+    username: null,
+    token: null,
 };
 exports.baseUri = 'https://secure.geonames.org/';
+exports.baseUriCommercial = 'https://secure.geonames.net/';
 exports.geoNamesAPI = [
     'astergdem',
     'children',
@@ -203,14 +205,16 @@ class Geonames {
             throw new Error(errNoUsernameMessage);
         }
         this.config = Object.assign({}, geonames_config_1.baseParams, options);
+        const { username, token } = this.config;
+        this.uri = token ? geonames_config_1.baseUriCommercial : geonames_config_1.baseUri;
         const api = axios_1.default.create({
-            baseURL: geonames_config_1.baseUri
+            baseURL: this.uri
         });
         for (let apiName of geonames_config_1.geoNamesAPI) {
             const fullApiName = `${apiName}${this.config.encoding}`;
             this[apiName] = async (params) => {
                 const response = await api.get(fullApiName, {
-                    params: Object.assign({ username: this.config.username, lang: this.config.lan }, params)
+                    params: Object.assign({ username }, (token && { token }), { lang: this.config.lan }, params)
                 });
                 return response.data;
             };
@@ -230,7 +234,7 @@ exports.default = Geonames;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/karim/Workspace/geonames/src/geonames.ts */"./geonames.ts");
+module.exports = __webpack_require__(/*! /home/k/projects/geonames.js/src/geonames.ts */"./geonames.ts");
 
 
 /***/ }),

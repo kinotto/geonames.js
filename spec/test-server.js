@@ -12,6 +12,33 @@ describe('Geonames', () => {
       "you must provide a username, if you don't have one register on http://www.geonames.org/login"
     )
   })
+
+  it('should use the free tier if no token is provided', () => {
+    const expectedDomain = "https://secure.geonames.org/"
+    const settings = {
+      username,
+      lan: 'en',
+      encoding: 'JSON',
+    }
+    const geonames = new Geonames(settings)
+    expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
+    expect(geonames.options).to.be.an('Object').that.not.have.keys('token').that.include({ token: null})
+    expect(geonames.config).to.be.an('Object').that.include(settings)
+  })
+
+  it('should use the commercial tier if token is provided', () => {
+    const expectedDomain = "https://secure.geonames.net/"
+    const settings = {
+      username,
+      token: "dummyToken",
+      lan: 'en',
+      encoding: 'JSON',
+    }
+    const geonames = new Geonames(settings)
+    expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
+    expect(geonames.options).to.be.an('object').that.have.any.keys('token')
+    expect(geonames.config).to.be.an('object').that.include({token: settings.token})
+  })
 })
 
 describe('Geonames API', () => {
