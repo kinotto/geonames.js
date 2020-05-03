@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("axios"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["axios"], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
-		exports["Geonames"] = factory(require("axios"));
+		exports["Geonames"] = factory();
 	else
-		root["Geonames"] = factory(root["axios"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_axios__) {
+		root["Geonames"] = factory();
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -103,7 +103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /*! exports provided: name, version, homepage, description, main, scripts, repository, author, contributors, license, bugs, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"geonames.js","version":"3.0.0","homepage":"https://github.com/kinotto/geonames.js","description":"REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/","main":"dist/geonames.min.js","scripts":{"test":"mocha ./spec/test-server.js --timeout 50000","test-debug":"mocha ./spec/test-server.js --nolazy --inspect-brk=9229","coverage":"nyc npm test && nyc report --reporter=text-lcov | coveralls","build":"cross-env NODE_ENV=production webpack","build:dev":"cross-env NODE_ENV=development webpack","build:all":"rm -rf dist/* && npm run build && npm run build:dev"},"repository":"git+https://github.com/kinotto/geonames.js.git","author":"Karim Abdelcadir <kinotto88@yahoo.it>","contributors":[{"name":"Vito Macchia","email":"vito.macchia@gmail.com"}],"license":"MIT","bugs":{"url":"https://github.com/kinotto/geonames.js/issues"},"dependencies":{"axios":"^0.18.0"},"devDependencies":{"babel-core":"^6.26.3","babel-loader":"^7.1.5","babel-plugin-transform-object-rest-spread":"^6.26.0","babel-preset-env":"^1.7.0","chai":"^3.5.0","coveralls":"^2.12.0","cross-env":"^5.2.0","mocha":"^3.2.0","nyc":"^10.1.2","opener":"^1.4.1","require-dir":"^0.3.1","sinon":"^1.17.7","sinon-chai":"^2.8.0","tiny-lr":"^0.2.1","ts-loader":"^4.4.2","typescript":"^2.9.2","uglifyjs-webpack-plugin":"^1.2.7","webpack":"^4.16.2","webpack-cli":"^3.1.0","webpack-node-externals":"^1.7.2"}};
+module.exports = JSON.parse("{\"name\":\"geonames.js\",\"version\":\"2.3.0\",\"homepage\":\"https://github.com/kinotto/geonames.js\",\"description\":\"REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/\",\"main\":\"dist/geonames.min.js\",\"scripts\":{\"test\":\"mocha ./spec/test-server.js --timeout 50000\",\"test-debug\":\"mocha ./spec/test-server.js --nolazy --inspect-brk=9229\",\"coverage\":\"nyc npm test && nyc report --reporter=text-lcov | coveralls\",\"build\":\"cross-env NODE_ENV=production webpack\",\"build:dev\":\"cross-env NODE_ENV=development webpack\",\"build:all\":\"rm -rf dist/* && npm run build && npm run build:dev\"},\"repository\":\"git+https://github.com/kinotto/geonames.js.git\",\"author\":\"Karim Abdelcadir <kinotto88@yahoo.it>\",\"contributors\":[{\"name\":\"Vito Macchia\",\"email\":\"vito.macchia@gmail.com\"},{\"name\":\"Xavi Torelló\",\"email\":\"info@xaviertorello.cat\"}],\"license\":\"MIT\",\"bugs\":{\"url\":\"https://github.com/kinotto/geonames.js/issues\"},\"dependencies\":{},\"devDependencies\":{\"babel-core\":\"^6.26.3\",\"babel-loader\":\"^7.1.5\",\"babel-plugin-transform-object-rest-spread\":\"^6.26.0\",\"babel-preset-env\":\"^1.7.0\",\"chai\":\"^3.5.0\",\"coveralls\":\"^2.12.0\",\"cross-env\":\"^5.2.0\",\"mocha\":\"^3.2.0\",\"nyc\":\"^10.1.2\",\"opener\":\"^1.4.1\",\"require-dir\":\"^0.3.1\",\"sinon\":\"^1.17.7\",\"sinon-chai\":\"^2.8.0\",\"tiny-lr\":\"^0.2.1\",\"ts-loader\":\"^4.4.2\",\"typescript\":\"^2.9.2\",\"uglifyjs-webpack-plugin\":\"^1.2.7\",\"webpack\":\"^4.16.2\",\"webpack-cli\":\"^3.1.0\",\"webpack-node-externals\":\"^1.7.2\"}}");
 
 /***/ }),
 
@@ -189,12 +189,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const pkg = __importStar(__webpack_require__(/*! ../package.json */ "../package.json"));
-const axios_1 = __importDefault(__webpack_require__(/*! axios */ "axios"));
 const geonames_config_1 = __webpack_require__(/*! ./geonames.config */ "./geonames.config.ts");
 class Geonames {
     constructor(options) {
@@ -207,16 +203,12 @@ class Geonames {
         this.config = Object.assign({}, geonames_config_1.baseParams, options);
         const { username, token } = this.config;
         this.uri = token ? geonames_config_1.baseUriCommercial : geonames_config_1.baseUri;
-        const api = axios_1.default.create({
-            baseURL: this.uri
-        });
         for (let apiName of geonames_config_1.geoNamesAPI) {
-            const fullApiName = `${apiName}${this.config.encoding}`;
+            const fullApiName = `${this.uri}${apiName}${this.config.encoding}`;
             this[apiName] = async (params) => {
-                const response = await api.get(fullApiName, {
-                    params: Object.assign({ username }, (token && { token }), { lang: this.config.lan }, params)
-                });
-                return response.data;
+                params = new URLSearchParams(Object.assign({ username }, (token && { token }), { lang: this.config.lan }, params)).toString();
+                const response = await fetch(`${fullApiName}?${params}`);
+                return response.json();
             };
         }
     }
@@ -234,19 +226,8 @@ exports.default = Geonames;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/k/projects/geonames.js/src/geonames.ts */"./geonames.ts");
+module.exports = __webpack_require__(/*! /home/jose/Proyectos/geonames.js/src/geonames.ts */"./geonames.ts");
 
-
-/***/ }),
-
-/***/ "axios":
-/*!************************!*\
-  !*** external "axios" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_axios__;
 
 /***/ })
 
