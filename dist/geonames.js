@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("https"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["https"], factory);
 	else if(typeof exports === 'object')
-		exports["Geonames"] = factory();
+		exports["Geonames"] = factory(require("https"));
 	else
-		root["Geonames"] = factory();
-})(this, function() {
+		root["Geonames"] = factory(root["https"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_https__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -96,6 +96,37 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "../node_modules/webpack/buildin/global.js":
+/*!*************************************************!*\
+  !*** ../node_modules/webpack/buildin/global.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
 /***/ "../package.json":
 /*!***********************!*\
   !*** ../package.json ***!
@@ -181,7 +212,7 @@ exports.geoNamesAPI = [
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(global) {
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -192,6 +223,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const pkg = __importStar(__webpack_require__(/*! ../package.json */ "../package.json"));
 const geonames_config_1 = __webpack_require__(/*! ./geonames.config */ "./geonames.config.ts");
+if (typeof fetch !== 'function') {
+    const https = __webpack_require__(/*! https */ "https");
+    global.fetch = async (url) => {
+        return new Promise((resolve, reject) => {
+            const req = https.request(url, res => {
+                if (res.statusCode < 200 || res.statusCode >= 300) {
+                    return reject(new Error(`Status Code: ${res.statusCode}`));
+                }
+                let data = '';
+                res.on('data', chunk => {
+                    data += chunk;
+                });
+                res.on('end', () => resolve(JSON.parse(data)));
+            });
+            req.on('error', reject);
+            req.end();
+        });
+    };
+}
 class Geonames {
     constructor(options) {
         this.options = options;
@@ -208,7 +258,7 @@ class Geonames {
             this[apiName] = async (params) => {
                 params = new URLSearchParams(Object.assign({ username }, (token && { token }), { lang: this.config.lan }, params)).toString();
                 const response = await fetch(`${fullApiName}?${params}`);
-                return response.json();
+                return typeof response.json !== 'function' ? response : response.json();
             };
         }
     }
@@ -216,6 +266,7 @@ class Geonames {
 exports.Geonames = Geonames;
 exports.default = Geonames;
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/global.js */ "../node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -228,6 +279,17 @@ exports.default = Geonames;
 
 module.exports = __webpack_require__(/*! /home/jose/Proyectos/geonames.js/src/geonames.ts */"./geonames.ts");
 
+
+/***/ }),
+
+/***/ "https":
+/*!************************!*\
+  !*** external "https" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_https__;
 
 /***/ })
 
