@@ -69,7 +69,8 @@ const webpackConfig = {
     ]
   },
   externals: {
-    axios: 'axios'
+    axios: 'axios',
+    https: 'https'
   },
   plugins: plugins,
   devtool: IS_PRODUCTION ? false : 'source-map'
