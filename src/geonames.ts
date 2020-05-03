@@ -2,6 +2,31 @@ import * as pkg from '../package.json'
 import { GeonamesConfig, GeonamesOptions } from './geonames.types'
 import { baseParams, baseUri, baseUriCommercial, geoNamesAPI } from './geonames.config'
 
+if (typeof fetch !== 'function') {
+  const https = require('https')
+
+  global.fetch = async (url) => {
+    return new Promise((resolve, reject) => {
+     const req = https.request(url, res => {
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        return reject(new Error(`Status Code: ${res.statusCode}`))
+      }
+
+      let data = ''
+
+      res.on('data', chunk => {
+         data += chunk
+      })
+
+      res.on('end', () => resolve(JSON.parse(data)))
+    })
+
+    req.on('error', reject)
+    req.end()
+   })
+  }
+}
+
 export class Geonames {
   private config: GeonamesConfig
 
@@ -29,7 +54,7 @@ export class Geonames {
           ...params
         }).toString()
         const response = await fetch(`${fullApiName}?${params}`)
-        return response.json()
+        return typeof response.json !== 'function' ? response : response.json()
       }
     }
   }
