@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("https"));
+		module.exports = factory(require("https"), require("url"));
 	else if(typeof define === 'function' && define.amd)
-		define(["https"], factory);
+		define(["https", "url"], factory);
 	else if(typeof exports === 'object')
-		exports["Geonames"] = factory(require("https"));
+		exports["Geonames"] = factory(require("https"), require("url"));
 	else
-		root["Geonames"] = factory(root["https"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_https__) {
+		root["Geonames"] = factory(root["https"], root["url"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_https__, __WEBPACK_EXTERNAL_MODULE_url__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -223,6 +223,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const pkg = __importStar(__webpack_require__(/*! ../package.json */ "../package.json"));
 const geonames_config_1 = __webpack_require__(/*! ./geonames.config */ "./geonames.config.ts");
+if (typeof URLSearchParams === 'undefined') {
+    global.URLSearchParams = __webpack_require__(/*! url */ "url").URLSearchParams;
+}
 if (typeof fetch !== 'function') {
     const https = __webpack_require__(/*! https */ "https");
     global.fetch = async (url) => {
@@ -258,7 +261,15 @@ class Geonames {
             this[apiName] = async (params) => {
                 params = new URLSearchParams(Object.assign({ username }, (token && { token }), { lang: this.config.lan }, params)).toString();
                 const response = await fetch(`${fullApiName}?${params}`);
-                return typeof response.json !== 'function' ? response : response.json();
+                if (typeof response.json !== 'function') {
+                    return response;
+                }
+                else {
+                    if (response.statusCode < 200 || response.statusCode >= 300) {
+                        throw new Error('Status Code:' + (response.statusText || response.status));
+                    }
+                    return response.json();
+                }
             };
         }
     }
@@ -290,6 +301,17 @@ module.exports = __webpack_require__(/*! /home/jose/Proyectos/geonames.js/src/ge
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_https__;
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_url__;
 
 /***/ })
 
