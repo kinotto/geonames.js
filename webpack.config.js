@@ -70,6 +70,7 @@ const webpackConfig = {
   },
   externals: {
     axios: 'axios',
+    url: 'url',
     https: 'https'
   },
   plugins: plugins,
