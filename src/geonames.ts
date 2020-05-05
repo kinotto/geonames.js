@@ -2,6 +2,10 @@ import * as pkg from '../package.json'
 import { GeonamesConfig, GeonamesOptions } from './geonames.types'
 import { baseParams, baseUri, baseUriCommercial, geoNamesAPI } from './geonames.config'
 
+if(typeof URLSearchParams === 'undefined'){
+  global.URLSearchParams = require('url').URLSearchParams;
+}
+
 if (typeof fetch !== 'function') {
   const https = require('https')
 
@@ -54,7 +58,14 @@ export class Geonames {
           ...params
         }).toString()
         const response = await fetch(`${fullApiName}?${params}`)
-        return typeof response.json !== 'function' ? response : response.json()
+        if(typeof response.json !== 'function') {
+          return response
+        }else{
+          if (response.statusCode < 200 || response.statusCode >= 300) {
+            throw new Error('Status Code:' + (response.statusText || response.status));
+          }
+          return response.json()
+        }
       }
     }
   }
