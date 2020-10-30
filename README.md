@@ -1,4 +1,4 @@
-# geonames.js v2.3.0 NEW (see [changelog](#5-changelog-v230))
+# geonames.js v3.0.0 NEW (see [changelog](#5-changelog-v230))
 If you need an API to dynamically fetch countries, states, regions, cities here's the library you're looking for!
 
 `geonames.js` is a flexible library for browser and Nodejs 
@@ -49,11 +49,6 @@ The list of available options in the API is in <a href="http://www.geonames.org/
        import Geonames from 'geonames.js'; /* es module */
        const Geonames = require('geonames.js'); /* umd */
     ```
-   - ***alternative for browser***
-    ```html
-      <script type="text/javascript" src="node_modules/geonames.js/dist/geonames.min.js"></script>
-    ```
-     
   
 - **Usage**:
 
@@ -61,7 +56,7 @@ The list of available options in the API is in <a href="http://www.geonames.org/
 
   _free WS_
   ```javascript
-  const geonames = new Geonames({
+  const geonames = Geonames({
     username: 'myusername',
     lan: 'en',
     encoding: 'JSON'
@@ -73,7 +68,7 @@ The list of available options in the API is in <a href="http://www.geonames.org/
   To use the commercial tier just define your `token`:
 
   ```javascript
-  const geonames = new Geonames({
+  const geonames = Geonames({
     username: 'myusername',
     token: 'mytoken',
     lan: 'en',
@@ -99,7 +94,8 @@ The list of available options in the API is in <a href="http://www.geonames.org/
   })
   .catch(err => console.error(err));
   ```
-  
+
+
   _chaining calls_
   ```javascript 
   // async/await
@@ -147,9 +143,15 @@ USERNAME=myusername yarn test (unit testing)
 
 <br/>
 
-### 5. Changelog v2.3.0:
-- **Added support to Commercial Tier**
+### 5. Changelog v3.0.0:
+- **Added support for latest Geonames api (address, geoCodeAddress, streetNameLookup)**
+- **Added typescript autocomplete for all the api's**
+- **change function constructor to plain function**
+- **updated dependencies**
 
+
+![img](https://im3.ezgif.com/tmp/ezgif-3-0ef43f944121.gif)
+  
 <br/>
 
 ### 6. License:

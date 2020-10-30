@@ -1,13 +1,16 @@
-const chai = require('chai')
-const expect = require('chai').expect
-const sinonChai = require('sinon-chai')
+import { GeonamesInstance, GeonamesOptions } from "../src/geonames.types"
+//import { GeonamesInstance, GeonamesOptions } from "../dist/geonames.min.js";
+import { Geonames } from "../src/geonames";
+import chai from 'chai';
+import sinonChai from 'sinon-chai';
+const { expect } = chai;
 chai.use(sinonChai)
 const username = process.env.USERNAME
-const Geonames = require('../dist/geonames.min.js')
+
 
 describe('Geonames', () => {
   it('should throw an error if instantiated without parameters', () => {
-    const fn = () => new Geonames()
+    const fn = () => (Geonames as any)()
     expect(fn).to.throw(
       "you must provide a username, if you don't have one register on http://www.geonames.org/login"
     )
@@ -15,12 +18,12 @@ describe('Geonames', () => {
 
   it('should use the free tier if no token is provided', () => {
     const expectedDomain = "https://secure.geonames.org/"
-    const settings = {
+    const settings: GeonamesOptions = {
       username,
       lan: 'en',
       encoding: 'JSON',
     }
-    const geonames = new Geonames(settings)
+    const geonames = Geonames(settings);
     expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
     expect(geonames.options).to.be.an('Object').that.not.have.keys('token').that.include({ token: null})
     expect(geonames.config).to.be.an('Object').that.include(settings)
@@ -28,13 +31,14 @@ describe('Geonames', () => {
 
   it('should use the commercial tier if token is provided', () => {
     const expectedDomain = "https://secure.geonames.net/"
-    const settings = {
+    const settings: GeonamesOptions = {
       username,
       token: "dummyToken",
       lan: 'en',
       encoding: 'JSON',
     }
-    const geonames = new Geonames(settings)
+    const geonames = Geonames(settings)
+    
     expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
     expect(geonames.options).to.be.an('object').that.have.any.keys('token')
     expect(geonames.config).to.be.an('object').that.include({token: settings.token})
@@ -42,15 +46,24 @@ describe('Geonames', () => {
 })
 
 describe('Geonames API', () => {
-  var geonames
+  let geonames: GeonamesInstance
   beforeEach(() => {
-    geonames = new Geonames({ username, lan: 'en', encoding: 'JSON' })
+    geonames = Geonames({ username, lan: 'en', encoding: 'JSON' });
+    
+  })
+
+  it(' should return the geocode addresses', () => {
+    geonames
+      .geoCodeAddress({ q: 'Museumplein 6 amsterdam'})
+      .then(resp => {
+        expect(resp).to.exist
+      })
   })
 
   it('should return continent names ', done => {
     geonames
       .search({ q: 'CONT' })
-      .then(resp => {
+      .then((resp: any) => {
         expect(resp.geonames).to.be.instanceOf(Array)
         done()
       })
@@ -83,7 +96,7 @@ describe('Geonames API', () => {
   it('should return weather info', done => {
     geonames
       .weather({ north: 44.1, south: -9.9, east: -22.4, west: 55.2 })
-      .then(resp => {
+      .then((resp: any) => {
         expect(resp.weatherObservations).to.exist
         done()
       })
@@ -93,7 +106,7 @@ describe('Geonames API', () => {
   it('should return countries information', done => {
     geonames
       .countryInfo()
-      .then(resp => {
+      .then((resp: any) => {
         expect(resp.geonames[0].capital).to.exist
         done()
       })
@@ -103,7 +116,7 @@ describe('Geonames API', () => {
   it('should return children information', done => {
     geonames
       .children({ geonameId: '6255148' })
-      .then(resp => {
+      .then((resp: any) => {
         expect(resp.geonames[0].population).to.exist
         done()
       })
@@ -122,7 +135,7 @@ describe('Geonames API', () => {
     ]
 
     let promises = nearbyAPI.map(api => {
-      return geonames[api]({ lat: 48.86, lng: 2.34 })
+      return (geonames as any)[api]({ lat: 48.86, lng: 2.34 })
     })
 
     Promise.all(promises)
@@ -140,7 +153,7 @@ describe('Geonames API', () => {
         east: '-22.4',
         west: '55.2'
       })
-      .then(resp => {
+      .then((resp: any) => {
         expect(resp.geonames[0].toponymName).to.exist
         done()
       })
