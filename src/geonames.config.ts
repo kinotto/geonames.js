@@ -52,5 +52,10 @@ export const geoNamesAPI = [
   'weather',
   'weatherIcao',
   'wikipediaBoundingBox',
-  'wikipediaSearch'
-]
+  'wikipediaSearch',
+
+  // NEW
+  'address',
+  'geoCodeAddress',
+  'streetNameLookup'
+] as const;
