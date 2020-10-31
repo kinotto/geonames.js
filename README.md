@@ -1,4 +1,4 @@
-# geonames.js v3.0.0 NEW (see [changelog](#5-changelog-v230))
+# geonames.js v3.0.1 NEW (see [changelog](#5-changelog-v301))
 If you need an API to dynamically fetch countries, states, regions, cities here's the library you're looking for!
 
 `geonames.js` is a flexible library for browser and Nodejs 
@@ -143,31 +143,14 @@ USERNAME=myusername yarn test (unit testing)
 
 <br/>
 
-### 5. Changelog v3.0.0:
+### 5. Changelog v3.0.1:
 - **Added support for latest Geonames api (address, geoCodeAddress, streetNameLookup)**
 - **Added typescript autocomplete for all the api's**
 - **change function constructor to plain function**
 - **updated dependencies**
 
-
-![img](https://im3.ezgif.com/tmp/ezgif-3-0ef43f944121.gif)
   
 <br/>
 
 ### 6. License:
 MIT 2017 License <a href="https://github.com/kinotto">Karim Abdelcadir</a>
-
-### 7. Troubleshooting
-
-If using TSX and see the 
-
-```
-Could not find a declaration file for module 'geonames.js'. ... implicitly has an 'any' type.
-```
-
-error, try adding
-
-```typescript
-// index.ts
-declare module "geonames.js";
-```

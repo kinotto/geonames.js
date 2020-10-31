@@ -1,8 +1,14 @@
-import { GeonamesInstance, GeonamesOptions } from "../src/geonames.types"
-//import { GeonamesInstance, GeonamesOptions } from "../dist/geonames.min.js";
-import { Geonames } from "../src/geonames";
-import chai from 'chai';
-import sinonChai from 'sinon-chai';
+
+/** executes in node environment */
+const Geonames = require("../dist/geonames.min.js");
+
+//const { GeonamesInstance, GeonamesOptions } = require("../dist/geonames-types");
+//import { GeonamesInstance, GeonamesOptions } from "../src/typings"
+//import { Geonames } from "../src/geonames";
+//import Geonames from 'geonames.js';
+
+const chai = require('chai');
+const sinonChai = require('sinon-chai');
 const { expect } = chai;
 chai.use(sinonChai)
 const username = process.env.USERNAME
@@ -10,20 +16,19 @@ const username = process.env.USERNAME
 
 describe('Geonames', () => {
   it('should throw an error if instantiated without parameters', () => {
-    const fn = () => (Geonames as any)()
-    expect(fn).to.throw(
-      "you must provide a username, if you don't have one register on http://www.geonames.org/login"
-    )
+    const fn = () => Geonames()
+    expect(fn).to.throw("you must provide a username, if you don't have one register on http://www.geonames.org/login")
   })
 
   it('should use the free tier if no token is provided', () => {
     const expectedDomain = "https://secure.geonames.org/"
-    const settings: GeonamesOptions = {
+    const settings = {
       username,
       lan: 'en',
       encoding: 'JSON',
     }
     const geonames = Geonames(settings);
+    
     expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
     expect(geonames.options).to.be.an('Object').that.not.have.keys('token').that.include({ token: null})
     expect(geonames.config).to.be.an('Object').that.include(settings)
@@ -31,7 +36,7 @@ describe('Geonames', () => {
 
   it('should use the commercial tier if token is provided', () => {
     const expectedDomain = "https://secure.geonames.net/"
-    const settings: GeonamesOptions = {
+    const settings = {
       username,
       token: "dummyToken",
       lan: 'en',
@@ -46,7 +51,7 @@ describe('Geonames', () => {
 })
 
 describe('Geonames API', () => {
-  let geonames: GeonamesInstance
+  let geonames
   beforeEach(() => {
     geonames = Geonames({ username, lan: 'en', encoding: 'JSON' });
     
@@ -63,7 +68,7 @@ describe('Geonames API', () => {
   it('should return continent names ', done => {
     geonames
       .search({ q: 'CONT' })
-      .then((resp: any) => {
+      .then((resp) => {
         expect(resp.geonames).to.be.instanceOf(Array)
         done()
       })
@@ -96,7 +101,7 @@ describe('Geonames API', () => {
   it('should return weather info', done => {
     geonames
       .weather({ north: 44.1, south: -9.9, east: -22.4, west: 55.2 })
-      .then((resp: any) => {
+      .then((resp) => {
         expect(resp.weatherObservations).to.exist
         done()
       })
@@ -106,7 +111,7 @@ describe('Geonames API', () => {
   it('should return countries information', done => {
     geonames
       .countryInfo()
-      .then((resp: any) => {
+      .then((resp) => {
         expect(resp.geonames[0].capital).to.exist
         done()
       })
@@ -116,7 +121,7 @@ describe('Geonames API', () => {
   it('should return children information', done => {
     geonames
       .children({ geonameId: '6255148' })
-      .then((resp: any) => {
+      .then((resp) => {
         expect(resp.geonames[0].population).to.exist
         done()
       })
@@ -135,7 +140,7 @@ describe('Geonames API', () => {
     ]
 
     let promises = nearbyAPI.map(api => {
-      return (geonames as any)[api]({ lat: 48.86, lng: 2.34 })
+      return (geonames)[api]({ lat: 48.86, lng: 2.34 })
     })
 
     Promise.all(promises)
@@ -153,10 +158,12 @@ describe('Geonames API', () => {
         east: '-22.4',
         west: '55.2'
       })
-      .then((resp: any) => {
+      .then((resp) => {
         expect(resp.geonames[0].toponymName).to.exist
         done()
       })
       .catch(err => done(err))
   })
 })
+
+// ts-node/register

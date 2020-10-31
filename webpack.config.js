@@ -23,7 +23,7 @@ const entries = {
 }
 
 const JS_LOADERS = [
-  { loader: 'ts-loader', options: { transpileOnly: true } }
+  { loader: 'ts-loader' }
 ]
 if (ENVIRONMENT === 'production') {
   plugins.push(
