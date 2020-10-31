@@ -1,10 +1,10 @@
 {
   "name": "geonames.js",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "homepage": "https://github.com/kinotto/geonames.js",
   "description": "REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/",
   "main": "dist/geonames.min.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/geonames.d.ts",
   "scripts": {
     "test": "mocha --experimental-modules ./spec/test-server.js --timeout 50000",
     "test-debug": "mocha ./spec/test-server.js --nolazy --inspect-brk=9229",
