@@ -1,4 +1,4 @@
-import { GeonamesConfig } from './geonames.types'
+import { GeonamesConfig } from './geonames-types'
 
 export const baseParams: GeonamesConfig = {
   encoding: 'JSON',

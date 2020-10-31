@@ -1,7 +1,8 @@
 import pkg from '../package.json'
 import axios from 'axios'
-import { GeonamesOptions, GeonamesInstance } from './geonames.types'
+import { GeonamesOptions, GeonamesInstance } from './geonames-types';
 import { baseParams, baseUri, baseUriCommercial, geoNamesAPI } from './geonames.config'
+
 
 export function Geonames(options: NonNullable<GeonamesOptions>): GeonamesInstance {
 
@@ -41,4 +42,4 @@ export function Geonames(options: NonNullable<GeonamesOptions>): GeonamesInstanc
   return createInstance(options);
 }
 
-export default Geonames
+export default Geonames;

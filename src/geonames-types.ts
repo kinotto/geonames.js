@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import { geoNamesAPI } from "./geonames.config"
 
+
 export interface GeonamesConfig {
   lan: string
   encoding: string
