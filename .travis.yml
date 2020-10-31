@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "7"
+  - "12"
 env:
   #encrypted geonames username for the CI to run unit tests
   global:
