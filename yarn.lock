@@ -78,6 +78,10 @@
   version "14.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz#146d3da57b3c636cc0d1769396ce1cfa8991147f"
 
+"@types/qs@^6.9.5":
+  version "6.9.5"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.5.tgz#434711bdd49eb5ee69d90c1d67c354a9a8ecb18b"
+
 "@types/sinon-chai@^3.2.5":
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/@types/sinon-chai/-/sinon-chai-3.2.5.tgz#df21ae57b10757da0b26f512145c065f2ad45c48"
@@ -3693,6 +3697,10 @@ punycode@^2.1.0:
 qs@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-5.2.0.tgz#a9f31142af468cb72b25b30136ba2456834916be"
+
+qs@^6.9.4:
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
 
 qs@~5.1.0:
   version "5.1.0"

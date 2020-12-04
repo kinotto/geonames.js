@@ -1,6 +1,6 @@
 {
   "name": "geonames.js",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "homepage": "https://github.com/kinotto/geonames.js",
   "description": "REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/",
   "main": "dist/geonames.min.js",
@@ -30,13 +30,15 @@
     "url": "https://github.com/kinotto/geonames.js/issues"
   },
   "dependencies": {
-    "axios": "^0.21.0"
+    "axios": "^0.21.0",
+    "qs": "^6.9.4"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/jest": "^26.0.15",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.14.6",
+    "@types/qs": "^6.9.5",
     "@types/sinon-chai": "^3.2.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",

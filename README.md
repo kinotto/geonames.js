@@ -1,8 +1,9 @@
-# geonames.js v3.0.2 NEW (see [changelog](#5-changelog-v302))
-If you need an API to dynamically fetch countries, states, regions, cities here's the library you're looking for!
+# geonames.js v3.0.3 NEW (see [changelog](#5-changelog-v303))
 
 `geonames.js` is a flexible library for browser and Nodejs 
-built on top <a href="http://www.geonames.org/" target="_blank">geonames.org<a> REST API.
+built on top <a href="http://www.geonames.org/" target="_blank">geonames.org webservices<a>.
+
+It provides a simple API to dynamically fetch countries, states, regions, cities and other milion geographical names.
 
 <img src="https://travis-ci.org/kinotto/geonames.js.svg?branch=master" alt="not found" style="display:inline" /> <img src="https://david-dm.org/kinotto/geonames.js.svg" alt="not found" style="display:inline" /> <img src="http://img.badgesize.io/kinotto/geonames.js/master/dist/geonames.min.js?max=100000&softmax=200000" alt="not found" />
 
@@ -142,7 +143,7 @@ USERNAME=myusername yarn test (unit testing)
 
 <br/>
 
-### 5. Changelog v3.0.2:
+### 5. Changelog v3.0.3:
 - **Added support for latest Geonames api (address, geoCodeAddress, streetNameLookup)**
 - **Added typescript autocomplete for all the api's**
 - **change function constructor to plain function**

@@ -2,7 +2,7 @@ import pkg from '../package.json'
 import axios from 'axios'
 import { GeonamesOptions, GeonamesInstance } from './geonames-types';
 import { baseParams, baseUri, baseUriCommercial, geoNamesAPI } from './geonames.config'
-
+import qs from 'qs';
 
 export function Geonames(options: NonNullable<GeonamesOptions>): GeonamesInstance {
 
@@ -23,16 +23,19 @@ export function Geonames(options: NonNullable<GeonamesOptions>): GeonamesInstanc
 
     for (let apiName of geoNamesAPI) {
       const fullApiName = `${apiName}${geonamesInstance.config.encoding}`;
-      geonamesInstance[apiName] = async (params: any) => {
+      geonamesInstance[apiName] = async (apiParams: any) => {
         const response = await api.get(fullApiName, {
           params: {
             username,
             ...(token && { token }),
             lang: geonamesInstance.config.lan,
-            ...params
-          }
+            ...apiParams
+          },
+          // it's in repeat mode to allow multiple query string with the same key
+          // https://github.com/kinotto/geonames.js/issues/27
+          paramsSerializer: params => qs.stringify(params, { arrayFormat: 'repeat' })
         })
-        return response.data
+        return response.data;
       }
     }
 
