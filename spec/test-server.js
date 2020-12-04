@@ -28,9 +28,9 @@ describe('Geonames', () => {
       encoding: 'JSON',
     }
     const geonames = Geonames(settings);
-    
+
     expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
-    expect(geonames.options).to.be.an('Object').that.not.have.keys('token').that.include({ token: null})
+    expect(geonames.options).to.be.an('Object').that.not.have.keys('token').that.include({ token: null })
     expect(geonames.config).to.be.an('Object').that.include(settings)
   })
 
@@ -43,10 +43,10 @@ describe('Geonames', () => {
       encoding: 'JSON',
     }
     const geonames = Geonames(settings)
-    
+
     expect(geonames.uri).to.be.a('string').to.equal(expectedDomain)
     expect(geonames.options).to.be.an('object').that.have.any.keys('token')
-    expect(geonames.config).to.be.an('object').that.include({token: settings.token})
+    expect(geonames.config).to.be.an('object').that.include({ token: settings.token })
   })
 })
 
@@ -54,12 +54,12 @@ describe('Geonames API', () => {
   let geonames
   beforeEach(() => {
     geonames = Geonames({ username, lan: 'en', encoding: 'JSON' });
-    
+
   })
 
   it(' should return the geocode addresses', () => {
     geonames
-      .geoCodeAddress({ q: 'Museumplein 6 amsterdam'})
+      .geoCodeAddress({ q: 'Museumplein 6 amsterdam' })
       .then(resp => {
         expect(resp).to.exist
       })
@@ -68,6 +68,16 @@ describe('Geonames API', () => {
   it('should return continent names ', done => {
     geonames
       .search({ q: 'CONT' })
+      .then((resp) => {
+        expect(resp.geonames).to.be.instanceOf(Array)
+        done()
+      })
+      .catch(err => done(err))
+  })
+
+  it('should return continent names using multiple query string with same key (featureTag)', done => {
+    geonames
+      .search({ country: 'uk', featureCode: ['ADM2', 'ADM1'] })
       .then((resp) => {
         expect(resp.geonames).to.be.instanceOf(Array)
         done()
