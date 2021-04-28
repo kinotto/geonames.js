@@ -1,4 +1,3 @@
-import { AxiosResponse } from "axios";
 import { geoNamesAPI } from "./geonames.config";
 export interface GeonamesConfig {
     lan: string;
@@ -10,7 +9,7 @@ export interface GeonamesConfig {
 }
 export declare type GeonamesOptions = Partial<GeonamesConfig>;
 declare type GeonamesApiTypes = {
-    [k in typeof geoNamesAPI[number]]: (...args: any) => Promise<AxiosResponse<any>>;
+    [k in typeof geoNamesAPI[number]]: (...args: any) => Promise<any>;
 };
 declare type GeonamesBasic = {
     readonly uri: string;
