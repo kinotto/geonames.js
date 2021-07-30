@@ -9,8 +9,8 @@ export const baseParams: GeonamesConfig = {
   token: null,
 }
 
-export const baseUri = 'https://www.geonames.org/'
-export const baseUriCommercial = 'https://www.geonames.net/'
+export const baseUri = 'https://secure.geonames.org/'
+export const baseUriCommercial = 'https://secure.geonames.net/'
 
 export const geoNamesAPI = [
   'astergdem',
@@ -57,5 +57,5 @@ export const geoNamesAPI = [
   // NEW
   'address',
   'geoCodeAddress',
-  'streetNameLookup'
-] as const;
+  'streetNameLookup',
+] as const

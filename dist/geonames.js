@@ -2244,8 +2244,8 @@ exports.baseParams = {
     username: null,
     token: null,
 };
-exports.baseUri = 'https://www.geonames.org/';
-exports.baseUriCommercial = 'https://www.geonames.net/';
+exports.baseUri = 'https://secure.geonames.org/';
+exports.baseUriCommercial = 'https://secure.geonames.net/';
 exports.geoNamesAPI = [
     'astergdem',
     'children',
@@ -2290,7 +2290,7 @@ exports.geoNamesAPI = [
     // NEW
     'address',
     'geoCodeAddress',
-    'streetNameLookup'
+    'streetNameLookup',
 ];
 
 
