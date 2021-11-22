@@ -1,6 +1,6 @@
 {
   "name": "geonames.js",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "homepage": "https://github.com/kinotto/geonames.js",
   "description": "REST api to fetch countries, regions, cities etc. A flexible library for browser and node.js usage built on top http://www.geonames.org/",
   "main": "dist/geonames.min.js",
